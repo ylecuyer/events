@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+    <title>
+	    <%= @event.name %>
+    </title>
+</head>
+<body>
+
+	<%= link_to 'Scan QR Code', checkin_scan_event_path %>
+
+	<% @event.attendees.includes(:category).order('last_name ASC, first_name ASC').each do |attendee| %>
+
+		<div>
+			<%= attendee.full_name %><br/>
+			<%= attendee.reference %><br/>
+			<%= attendee.category.name %>
+		</div>
+		<br/>
+
+	<% end %>
+
+</body>
+</html>
+

@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>
+            Attendees
+        </title>
+
+        <style type="text/css">
+            .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+                padding: 3px;
+            }
+            table {
+                font-size: 13px;
+            }
+
+	    table > tbody > tr > td {
+		border-bottom: 1px solid #e0e0e0;
+	    }
+
+	    tbody > tr:nth-child(2n+1) > td {
+		    background-color: #fbfbfb;
+	    }
+	    
+	    th {
+		    text-align: left;
+		    text-transform: uppercase;
+	    }
+        </style>
+    </head>
+    <body style="background-color: #FFFFFF;" onload="window.print();">
+        <div style="border:none; margin: 0;">
+		<b><%= @event.attendees.count %></b> Attendees for event: <b><%= @event.name %></b> (<%= @event.start %>)<br/><br/>
+        </div>
+
+        <table style="width: 100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Email</th>
+                    <th>Category</th>
+                    <th>Reference</th>
+                </tr>
+            </thead>
+            <tbody>
+		    <% @event.attendees.includes(:category).order('last_name ASC, first_name ASC').each do |attendee| %>
+                <tr>
+			<td><%= attendee.last_name %></td>
+			<td><%= attendee.first_name %></td>
+			<td><%= attendee.email %></td>
+			<td><%= attendee.category.name %></td>
+			<td style="font-family: monospace"><%= attendee.reference %></td>
+                </tr>
+		    <% end %>
+	    </tbody>
+        </table>
+    </body>
+</html>

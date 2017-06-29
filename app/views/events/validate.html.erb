@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Attendize</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+
+body {
+	background-color: <% if @success %>#1fa67a<% else %>#a61f4b<% end %>;
+}
+
+.sticky {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	height: 15%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.button {
+	width: 80%;
+	text-align: center;
+	padding: 10px;
+	background-color: #FFF;
+}
+
+.content {
+	height: 85%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 5%;
+}
+
+.inner {
+	text-align: center;
+}
+
+</style>
+</head>
+<body>
+	<div class="content">
+		<div class="inner">
+			<% if @success %>
+				<%= image_tag 'checkin_ok.png' %>
+			<% else %>
+				<%= image_tag 'checkin_ko.png' %>
+			<% end%>
+
+			<% if @attendee %>
+				<p><%= @attendee.full_name %></p>
+				<p><%= @attendee.category.name %></p>
+			<% end %>
+
+			<p><%= @message %></p>
+		</div>
+	</div>
+
+	<div class="sticky">
+		<a class="button" onclick="window.close()">Scan another ticket</a>
+	</div>
+</body>
+</html>

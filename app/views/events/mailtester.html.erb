@@ -1,0 +1,56 @@
+<%= render 'menu', event: @event %>
+
+<div class="row mt-3">
+	<div class="col-2">
+
+
+		<div class="card">
+		  <%= image_tag @event.image.url(:thumb), class: "card-img-top", style: "margin: 10px auto 10px auto; max-width: 100%"  %>
+		  <div class="card-block">
+
+			<%= link_to "https://www.mail-tester.com/#{@result['mailboxId']}", target: "_blank", class: "btn btn-secondary btn-block" do %>
+				<i class="fa fa-external-link" aria-hidden="true"></i> View results
+			<% end %>
+			<hr/>
+			<%= link_to "Run the test", do_mailtester_event_path, method: :post, class: "btn btn-primary btn-block" %>
+		  </div>
+		</div>
+
+	</div>
+	<div class="col">
+		<%= image_tag 'logos/mailtester.png', style: "max-height: 50px" %>
+
+		<% if @result['status'] %>
+			<% klass = case 10+@result['mark']; when 6..10; then 'success'; when 5..6; then 'warning'; else 'danger' end %>
+			<div class="card card-inverse card-<%= klass %> mt-3 text-center">
+		  <div class="card-block">
+		    <blockquote class="card-blockquote">
+			    <p><%= @result['title'] %></p>
+			    <p class="mb-0" style="font-size: 30px; font-weight: bold"><%= @result['displayedMark'] %></p>
+		    </blockquote>
+		  </div>
+		</div>
+
+		<div class="json mt-3" id="render">
+		</div>
+
+		<script type="text/javascript">
+
+		formatter = new JSONFormatter(<%= raw @result.to_json %>);
+		div = document.getElementById('render');
+		div.innerHTML = '';
+		div.appendChild(formatter.render());
+
+		</script>
+		<% else %>
+		    <div class="card card-outline-primary my-3 text-center">
+		      <div class="card-block">
+			<blockquote class="card-blockquote">
+			  <p>The test hasn't been run</p>
+			  <%= link_to 'Run the test', do_mailtester_event_path, method: :post, class: "btn btn-primary" %>
+			</blockquote>
+		      </div>
+		    </div>
+		<% end %>
+	</div>
+</div>

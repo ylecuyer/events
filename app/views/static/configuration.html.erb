@@ -1,0 +1,61 @@
+		<div class="alert alert-info" role="alert">
+			<strong>Heads up!</strong> Change those values in <code>config/application.yml</code> then restart the application for the changes to take effect.
+		</div>
+	</div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+
+<div class="card" style="margin-bottom: 15px">
+  <%= image_tag 'logos/mailgun.svg', class: 'card-img-top' %>
+  <ul class="list-group list-group-flush">
+	  <li class="list-group-item"><b>Mailgun API Key:</b>&nbsp;<code><%= ENV['MAILGUN_API_KEY'] %></code></li>
+	  <li class="list-group-item"><b>Mailgun Domain:</b>&nbsp;<code><%= ENV['MAILGUN_DOMAIN'] %></code></li>
+	  <li class="list-group-item"><b>Mailgun Sender Name:</b>&nbsp;<code><%= ENV['MAILGUN_SENDER_NAME'] %></code></li>
+	  <li class="list-group-item"><b>Mailgun Sender Email:</b>&nbsp;<code><%= ENV['MAILGUN_SENDER_EMAIL'] %></code></li>
+	  <li class="list-group-item"><b>Mailgun total:</b>&nbsp;<code><%= @total %></code></li>
+  </ul>
+</div>
+
+  </div>
+
+  <div class="col-sm-6">
+
+<div class="card" style="margin-bottom: 15px">
+  <%= image_tag 'logos/mailtester.png', class: 'card-img-top', style: "margin: auto" %>
+  <ul class="list-group list-group-flush">
+	  <li class="list-group-item"><b>Mailtester login:</b>&nbsp;<code><%= ENV['MAILTESTER_LOGIN'] %></code></li>
+  </ul>
+</div>
+
+  </div>
+
+  <div class="col-sm-6">
+
+<div class="card" style="margin-bottom: 15px">
+  <%= image_tag 'logos/sidekiq.png', class: 'card-img-top', style: "margin: auto; max-height: 150px;" %>
+  <ul class="list-group list-group-flush">
+	  <li class="list-group-item"><b>Sidekiq interface:</b>&nbsp;<code><%= link_to '/sidekiq', '/sidekiq' %></code></li>
+  </ul>
+</div>
+
+  </div>
+
+  <% if Rails.env.development? %>
+
+  <div class="col-sm-6">
+
+<div class="card" style="margin-bottom: 15px">
+  <%= image_tag 'logos/ngrok.png', class: 'card-img-top', style: "margin: auto; max-height: 150px;" %>
+  <ul class="list-group list-group-flush">
+	  <li class="list-group-item"><b>Ngrok HTTPS:</b>&nbsp;<code><%= link_to @ngrok_https, @ngrok_https %></code></li>
+    <li class="list-group-item"><%= raw @qrcode.as_svg %></li>
+  </ul>
+</div>
+
+  </div>
+
+  <% end %>
+
+</div>
+

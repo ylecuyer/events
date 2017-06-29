@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+<style>
+.qrcode table {
+  border-width: 0;
+  border-style: none;
+  border-collapse: collapse;
+}
+
+.qrcode td {
+  border-left: solid 10px #000;
+  padding: 0; 
+  margin: 0; 
+  width: 0px; 
+  height: 10px; 
+}
+
+.qrcode td.black { border-color: #000; }
+.qrcode td.white { border-color: #fff; }
+
+.ticket {
+    /*page-break-after: always;*/
+    padding: 10px;
+    border: 1px solid #000;
+    width: 700px;
+    margin: 0 auto;
+    margin-top: 20px;
+    background: #FFF;
+    position: relative;
+    height: 330px;
+    font-size: 12px;
+    color: #999;
+    overflow: hidden;
+}
+
+.ticket table {
+    width: 100%;
+}
+
+.ticket h1 {
+    margin-bottom: 5px;
+    margin-top: 0px;
+}
+
+.ticket hr {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    margin: 5px 0;
+}
+
+.ticket .barcode {
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    left: 0px;
+    bottom: 85px;
+    overflow: hidden;
+    padding: 10px;
+    border: 1px solid #000;
+    border-left: none;
+    background-color: #fdfdfd;
+}
+
+.ticket .top_barcode {
+    margin-bottom: 15px;
+}
+
+.ticket h4 {
+  text-transform: uppercase;
+  margin: 0px;
+  font-size: 12px;
+  color: #a2aeae;
+  font-familly: monospace;
+}
+
+.ticket p {
+  margin: 0px;
+  margin-bottom: 15px;
+  font-size: 21px;
+  color: #525252;
+  font-familly: monospace;
+  text-transform: uppercase;
+}
+
+.ticket .event_details, .ticket .attendee_details {
+    position: absolute;
+    top: 15px;
+}
+
+.ticket .event_details {
+    left: 190px;
+    #overflow: hidden;
+    max-width: 230px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    top: 80px;
+}
+
+.ticket .attendee_details {
+    left: 450px;
+    overflow: hidden;
+    max-width: 195px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    top: 193px;
+}
+
+.ticket .logo {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    border: 1px solid #000;
+    border-top: none;
+    border-right: none;
+    padding: 5px;
+    text-align: center;
+}
+
+.ticket .logo img {
+    max-width: 110px;
+}
+</style>
+  </head>
+  <body>
+<div class="ticket">
+	<% if event.image.present? %>
+    <div class="logo">
+	    <%= image_tag event.image.url(:thumb) %>
+    </div>
+    <% end %>
+
+    <div class="event_details">
+	    <h4>Name</h4>
+	    <p><%= attendee.full_name %></p>
+	    <h4>Venue</h4>
+	    <p><%= event.venue %></p>
+	    <h4>Start Date / Time</h4>
+	    <p><%= event.start.strftime("%B %d at %I:%M %p") %></p>
+	    <h4>End Date / Time</h4>
+	    <p><%= if event.end then event.end.strftime("%B %d at %I:%M %p") else "### ### ###" end %></p>
+    </div>
+
+    <div class="attendee_details">
+        <h4>Ref.</h4>
+	<p>#<%= attendee.reference %></p>
+        <h4>Category</h4>
+	<p><%= attendee.category.name %></p>
+    </div>
+
+    <div class="barcode qrcode">
+        <%= raw qrcode.as_svg(module_size: 3) %>
+    </div>
+</div>
+  </body>
+</html>

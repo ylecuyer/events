@@ -1,0 +1,15 @@
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title">Invite attendee</h4>
+    <%= simple_form_for [@event, @attendee] do |f| %>
+	    <%= f.input :first_name %>
+	    <%= f.input :last_name %>
+	    <%= f.input :email %>
+	    <%= f.association :category, collection: @event.categories %>
+      <div class="text-right">
+        <%= link_to 'Cancel', event_attendees_path(@event), class: "btn btn-outline-danger btn-lg" %>
+        <%= f.button :submit, class: "btn btn-primary btn-lg" %>
+      </div>
+    <% end %>
+  </div>
+</div>

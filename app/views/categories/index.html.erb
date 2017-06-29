@@ -1,0 +1,41 @@
+<%= render 'events/menu', event: @event %>
+
+<div class="row mt-3">
+	<div class="col-2">
+
+
+		<div class="card">
+		  <%= image_tag @event.image.url(:thumb), class: "card-img-top", style: "margin: 10px auto 10px auto; max-width: 100%"  %>
+		  <div class="card-block">
+
+			<hr/>
+			<%= link_to 'Create category', new_event_category_path, class: "btn btn-primary btn-block" %>
+		  </div>
+		</div>
+
+	</div>
+	<div class="col">
+		<h1>Categories</h1>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Attendee count</th>
+          <th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @categories.each do |category| %>
+          <tr><td><%= category.name %></td><td><%= category.attendees.count %></td>
+            <td>
+              <%= link_to edit_event_category_path(@event.id, category.id) do %>
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              <% end %>
+            </td>
+          </tr>
+				<% end %>
+			</tbody>
+		</table>
+
+	</div>
+</div>

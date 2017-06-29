@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="col">
+		<ul class="nav nav-pills justify-content-center">
+		  <li class="nav-item">
+			  <%= link_to 'Detail', event_path(event), class: ['nav-link', if current_page?(event_path(event)) then 'active' end] %>
+		  </li>
+		  <li class="nav-item">
+			  <%= link_to 'Categories', event_categories_path(event), class: ['nav-link', if current_page?(event_categories_path(event)) then 'active' end] %>
+		  </li>
+		  <li class="nav-item">
+			  <%= link_to 'Attendees', event_attendees_path(event), class: ['nav-link', if current_page?(event_attendees_path(event)) then 'active' end] %>
+		  </li>
+		  <li class="nav-item">
+			  <%= link_to 'Mailtester', mailtester_event_path(event), class: ['nav-link', if current_page?(mailtester_event_path(event)) then 'active' end] %>
+		  </li>
+		</ul>
+	</div>
+</div>

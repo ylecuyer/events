@@ -1,0 +1,45 @@
+version: '2'
+
+services:
+  db:
+    image: postgres:9.6.1
+    ports:
+      - 5432:5432
+  app:
+    build: 
+      context: .
+      dockerfile: docker/rails/Dockerfile
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+      - gems
+    volumes_from:
+      - gems
+  gems:
+    image: busybox
+    volumes:
+      - /ruby_gems
+  redis:
+    image: redis
+  sidekiq:
+    build: 
+      context: .
+      dockerfile: docker/rails/Dockerfile
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - db
+      - gems
+    volumes_from:
+      - gems
+    command: bundle exec sidekiq -c 5
+  ngrok:
+    tty: true
+    build: 
+      context: docker/ngrok
+      dockerfile: Dockerfile
+    ports:
+      - 4040:4040

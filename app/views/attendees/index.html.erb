@@ -1,0 +1,92 @@
+<%= render 'events/menu', event: @event %>
+
+<div class="row mt-3">
+	<div class="col-2">
+
+
+		<div class="card">
+		  <%= image_tag @event.image.url(:thumb), class: "card-img-top", style: "margin: 10px auto 10px auto; max-width: 100%"  %>
+		  <div class="card-block">
+			<%= link_to send_invitations_event_path(@event), method: :post, class: "btn btn-secondary btn-block" do %>
+				<i class="fa fa-envelope-o" aria-hidden="true"></i> Send invitations
+			<% end %>
+
+			<%= link_to "Check invitations status", check_invitations_status_event_path(@event), method: :post, class: "btn btn-secondary btn-block" %>
+
+			<%= link_to import_csv_event_path(@event), class: "btn btn-secondary btn-block" do %>
+				<i class="fa fa-file-text-o" aria-hidden="true"></i> Import list
+			<% end %>
+
+			<%= link_to export_csv_event_path(@event), class: "btn btn-secondary btn-block" do %>
+				<i class="fa fa-file-text-o" aria-hidden="true"></i> Export CSV
+			<% end %>
+
+			<%= link_to export_failed_event_path(@event), class: "btn btn-secondary btn-block" do %>
+				<i class="fa fa-exclamation-circle" aria-hidden="true"></i> Export failed
+			<% end %>
+
+			<hr/>
+			<%= link_to 'Invite attendee', new_event_attendee_path, class: "btn btn-primary btn-block" %>
+		  </div>
+		</div>
+
+	</div>
+	<div class="col">
+		<h1>Attendees</h1>
+
+    <div class="row my-5">
+      <div class="col metric invited"><div class="metric-value"><%= @total %></div><div class="metric-label">Attendees</div></div>
+      <div class="col metric sent"><div class="metric-value"><%= @sent %> <span class="metric-percent">(<%= (@sent/(@total+0.0)*100).round(2) %>%)</span></div><div class="metric-label">Invites sent</div></div>
+      <div class="col metric delivered"><div class="metric-value"><%= @delivered %> <span class="metric-percent">(<%= (@delivered/(@total+0.0)*100).round(2) %>%)</span></div><div class="metric-label">Delivered</div></div>
+      <div class="col metric warning"><div class="metric-value"><%= @warning %> <span class="metric-percent">(<%= (@warning/(@total+0.0)*100).round(2) %>%)</span></div><div class="metric-label">Warning</div></div>
+      <div class="col metric failed"><div class="metric-value"><%= @failed %> <span class="metric-percent">(<%= (@failed/(@total+0.0)*100).round(2) %>%)</span></div><div class="metric-label">Failed</div></div>
+    </div>
+
+
+		<table class="table datatable">
+			<thead>
+				<tr><th>Status</th><th>Reference</th><th>Last Name</th><th>First Name</th><th>Email</th><th>Category</th><th>Actions</th></tr>
+			</thead>
+			<tbody>
+				<% @event.attendees.includes([:category, :logs]).order('last_name ASC, first_name ASC').each do |attendee| %>
+					<tr><td><%= image_tag attendee.status_icon_name, alt: attendee.invitation_status, title: attendee.invitation_status, style: "opacity: #{ if attendee.is_processing_status_update then 0.5 else 1 end}"%></td><td><%= attendee.reference %></td><td><%= attendee.last_name %></td><td><%= attendee.first_name %></td><td><%= attendee.email %></td><td><%= attendee.category.name %></td>
+						<td>
+
+							<%= link_to edit_event_attendee_path(@event, attendee), class: "btn btn-secondary btn-sm" do %>
+								<i class="fa fa-pencil" aria-hidden="true"></i> Edit
+							<% end %>
+
+							<%= link_to ticket_event_attendee_path(@event, attendee), class: "btn btn-secondary btn-sm" do %>
+								<i class="fa fa-ticket" aria-hidden="true"></i> View ticket
+							<% end %>
+
+							<%= link_to send_invitation_event_attendee_path(@event, attendee), method: :post, class: "btn btn-secondary btn-sm" do %>
+								<i class="fa fa-envelope-o" aria-hidden="true"></i> Send invitation
+							<% end %>
+							<%= link_to 'Check invitation status', check_invitation_status_event_attendee_path(@event, attendee), method: :post, class: "btn btn-secondary btn-sm" %> 
+							<%= link_to logs_event_attendee_path(@event, attendee), class: "btn btn-sm btn-secondary" do %>
+								<i class="fa fa-file-text-o" aria-hidden="true"></i> View logs
+							<% end %>
+						</td></tr>
+
+					<% end %>
+					<tbody>
+		</table>
+
+		<script type="text/javascript">
+		$('.datatable').DataTable({
+			order: []
+		  // ajax: ...,
+		  // autoWidth: false,
+		  // pagingType: 'full_numbers',
+		  // processing: true,
+		  // serverSide: true,
+
+		  // Optional, if you want full pagination controls.
+		  // Check dataTables documentation to learn more about available options.
+		  // http://datatables.net/reference/option/pagingType
+		});	
+		</script>
+
+	</div>
+</div>

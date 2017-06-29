@@ -1,0 +1,7 @@
+console_ui: fasle
+web_addr: 0.0.0.0:4040
+tunnels:
+  app:
+    addr: app:3000
+    bind_tls: true
+    proto: http

@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title">New event</h4>
+    <%= simple_form_for @event do |f| %>
+	    <%= f.input :name %>
+	    <%= f.input :venue %>
+	    <%= f.input :start, as: :string %>
+	    <%= f.input :end, as: :string %>
+      <div class="text-right">
+        <%= link_to 'Cancel', :root, class: "btn btn-outline-danger btn-lg" %>
+        <%= f.button :submit, class: "btn btn-primary btn-lg" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+    $('#event_start').datetimepicker({step: 15, minDate: 0});
+    $('#event_end').datetimepicker({step: 15, minDate: 0});
+</script>

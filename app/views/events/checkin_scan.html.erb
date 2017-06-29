@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+    <title>
+	    <%= @event.name %>
+    </title>
+    <%= javascript_include_tag 'application' %>
+</head>
+<body>
+
+	<video id="preview" width="100%" height="100%"></video>
+    <script type="text/javascript">
+      scanner = new Instascan.Scanner({ video: document.getElementById('preview') , mirror: false });
+      scanner.addListener('scan', function (content) {
+        alert(content);
+      });
+      Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+          scanner.start(cameras[1]);
+        } else {
+          alert('No cameras found.');
+        }
+      }).catch(function (e) {
+        alert(e);
+      });
+    </script>
+</body>
+</html>
+
+<!-- nativa :
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+.mirror {
+  transform: scaleX(-1);
+}
+</style>
+  </head>
+  <body>
+    <video id="video" autoplay ></video>
+    <canvas id="canvas" style="display:none" ></canvas>
+  <script type="text/javascript">
+var barcodeDetector = new BarcodeDetector();
+var video = document.getElementById('video');
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext("2d");
+
+var running = false;
+
+  function decode() {
+
+    if (!running) {
+    
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    image = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+    barcodeDetector.detect(image)
+        .then(barcodes => {
+              running = false;
+              barcodes.forEach(barcode => alert(barcode.rawValue))
+                  })
+      .catch((e) => {
+                running = false;
+                alert("Boo, BarcodeDetection failed: " + e);
+              });
+
+      running = true;
+    }
+
+    setInterval(decode, 2000);
+
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+
+    video.addEventListener('play', function() {
+      w = video.videoWidth;
+      h = video.videoHeight;
+
+      canvas.width = w; canvas.height = h;
+
+      setInterval(decode, 2000);
+    });
+
+    navigator.getUserMedia({video: { facingMode: "environment" }}, 
+      function(stream) {
+         video.src = window.URL.createObjectURL(stream);
+      },
+      function(err) {
+         alert("The following error occurred: " + err.name);
+      }
+   );
+
+
+  });
+
+  </script>
+  </body>
+</html>
+
+-->

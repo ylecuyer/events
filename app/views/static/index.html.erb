@@ -1,0 +1,42 @@
+<% if Event.count == 0 %>
+<div class="row">
+  <div class="col">
+    <div class="card card-outline-primary mb-3 text-center">
+      <div class="card-block">
+        <blockquote class="card-blockquote">
+          <p>There is no event availabe yet</p>
+          <%= link_to 'Create your first event', new_event_path, class: "btn btn-primary" %>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</div>
+<% else %>
+
+
+<div id="calendar"></div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+  // page is now ready, initialize the calendar...
+
+  $('#calendar').fullCalendar({
+    height: "auto",
+    // put your options and callbacks here
+    events: [
+      <% @events.each do |event| %>
+      {
+        title: "<%= event.name %>",
+        start: "<%= event.start.iso8601 %>",
+        <% if event.end %> end: "<%= event.end.iso8601 %>", <% end %>
+          url: "<%= event_path(event) %>",
+      },
+      <% end %>
+    ],
+  })
+
+});
+</script>
+
+<% end %>

@@ -1,0 +1,57 @@
+<%= render 'menu', event: @event %>
+
+<div class="row mt-3">
+	<div class="col-2">
+
+
+		<div class="card">
+		  <%= image_tag @event.image.url(:thumb), class: "card-img-top", style: "margin: 10px auto 10px auto; max-width: 100%" %>
+		  <div class="card-block">
+
+			<%= link_to print_list_event_path, class: "btn btn-secondary btn-block" do %>
+				<i class="fa fa-print" aria-hidden="true"></i> Print list
+			<% end %>
+
+			<%= link_to checkin_event_path, class: "btn btn-secondary btn-block" do %>
+				<i class="fa fa-qrcode" aria-hidden="true"></i> Check-in
+			<% end %>
+			<hr/>
+			<%= link_to 'Edit', edit_event_path, class: "btn btn-primary btn-block" %>
+		  </div>
+		</div>
+
+	</div>
+	<div class="col">
+		<h1>Event details</h1>
+		<table class="table table-striped">
+			<tbody>
+				<tr><th>Name</th><td><%= @event.name %></td></tr>
+				<tr><th>Venue</th><td><%= @event.venue %></td></tr>
+				<tr><th>Start</th><td><%= @event.start.strftime("%B %d at %I:%M %p") %></td></tr>
+				<tr><th>End</th><td><%= @event.end.strftime("%B %d at %I:%M %p") if @event.end %></td></tr>
+			</tbody>
+		</table>
+
+		<hr class="mt-5" />
+		<h5><%= @event.subject %></h5>
+		<hr/>
+		<div class="media">
+			<%= image_tag 'profile_mask2.png', class: 'd-flex mr-3', style: "background-color: #ccc" %>
+		  <div class="media-body">
+			  <span class="mt-0"><span style="color: #222; font-weight: bold" ><%= ENV['MAILGUN_SENDER_NAME'] %></span> <span style="color: #777"><%= ENV['MAILGUN_SENDER_EMAIL'] %> <span style="text-decoration: underline; color: #222">via</span> <%= ENV['MAILGUN_DOMAIN'] %></span><br/>
+			  <span class="mt-0" style="color: #777" >to me</span>
+		  </div>
+		</div>
+		<hr/>
+		<%= raw @event.model %>
+
+		<hr/>
+
+		<%= form_tag send_test_mail_event_path, method: :post do %>
+
+			<%= text_field_tag :email %>
+			<%= submit_tag 'Send test mail' %>
+
+		<% end %>
+	</div>
+</div>

@@ -1,0 +1,47 @@
+<div class="row">
+	<div class="col-2">
+
+		<div class="card">
+			<%= image_tag 'events.png', class: "card-img-top", style: "margin: 10px auto 10px auto; max-width: 100%" %>
+			<div class="card-block">
+
+				<hr/>
+				<%= link_to 'Add event', new_event_path, class: "btn btn-primary btn-block" %>
+			</div>
+		</div>
+
+	</div>
+	<div class="col">
+		<h1>Events</h1>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Start</th>
+					<th>Where</th>
+					<th>Attendees count</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @events.each do |event| %>
+					<tr>
+						<td><%= event.name %></td>
+						<td><%= event.venue %></td>
+						<td><%= event.start.strftime("%B %d at %I:%M %p") %></td>
+						<td><%= event.attendees.count %></td>
+						<td>
+							<%= link_to event, class: "btn btn-outline-primary btn-sm" do %>
+								<i class="fa fa-cog" aria-hidden="true"></i> Manage
+							<% end %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+		<%= paginate @events %>
+
+	</div>
+
+</div>

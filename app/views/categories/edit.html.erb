@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title">Create category</h4>
+    <%= simple_form_for [@event, @category] do |f| %>
+	    <%= f.input :name %>
+      <div class="text-right">
+        <%= link_to 'Cancel', event_categories_path(@event), class: "btn btn-outline-danger btn-lg" %>
+        <%= f.button :submit, class: "btn btn-primary btn-lg" %>
+      </div>
+    <% end %>
+  </div>
+</div>

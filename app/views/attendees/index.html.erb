@@ -43,48 +43,30 @@
     </div>
 
 
-		<table class="table datatable">
+    <table class="table" id="attendees-datatable">
 			<thead>
 				<tr><th>Status</th><th>Reference</th><th>Last Name</th><th>First Name</th><th>Email</th><th>Category</th><th>Actions</th></tr>
 			</thead>
-			<tbody>
-				<% @event.attendees.includes([:category, :logs]).order('last_name ASC, first_name ASC').each do |attendee| %>
-					<tr><td><%= image_tag attendee.status_icon_name, alt: attendee.invitation_status, title: attendee.invitation_status, style: "opacity: #{ if attendee.is_processing_status_update then 0.5 else 1 end}"%></td><td><%= attendee.reference %></td><td><%= attendee.last_name %></td><td><%= attendee.first_name %></td><td><%= attendee.email %></td><td><%= attendee.category.name %></td>
-						<td>
-
-							<%= link_to edit_event_attendee_path(@event, attendee), class: "btn btn-secondary btn-sm" do %>
-								<i class="fa fa-pencil" aria-hidden="true"></i> Edit
-							<% end %>
-
-							<%= link_to ticket_event_attendee_path(@event, attendee), class: "btn btn-secondary btn-sm" do %>
-								<i class="fa fa-ticket" aria-hidden="true"></i> View ticket
-							<% end %>
-
-							<%= link_to send_invitation_event_attendee_path(@event, attendee), method: :post, class: "btn btn-secondary btn-sm" do %>
-								<i class="fa fa-envelope-o" aria-hidden="true"></i> Send invitation
-							<% end %>
-							<%= link_to 'Check invitation status', check_invitation_status_event_attendee_path(@event, attendee), method: :post, class: "btn btn-secondary btn-sm" %> 
-							<%= link_to logs_event_attendee_path(@event, attendee), class: "btn btn-sm btn-secondary" do %>
-								<i class="fa fa-file-text-o" aria-hidden="true"></i> View logs
-							<% end %>
-						</td></tr>
-
-					<% end %>
-					<tbody>
+      <tbody>
+        <tbody>
 		</table>
 
 		<script type="text/javascript">
-		$('.datatable').DataTable({
-			order: []
-		  // ajax: ...,
-		  // autoWidth: false,
-		  // pagingType: 'full_numbers',
-		  // processing: true,
-		  // serverSide: true,
-
-		  // Optional, if you want full pagination controls.
-		  // Check dataTables documentation to learn more about available options.
-		  // http://datatables.net/reference/option/pagingType
+		$('#attendees-datatable').DataTable({
+      "processing": true,
+      "serverSide": true,
+      "ajax": "<%= event_attendees_path(format: :json) %>",
+      "pagingType": "full_numbers",
+      "order": [],
+      "columns": [
+        {"data": "status", "orderable": false},
+        {"data": "reference"},
+        {"data": "last_name"},
+        {"data": "first_name"},
+        {"data": "email"},
+        {"data": "category_name"},
+        {"data": "actions", "orderable": false},
+      ]
 		});	
 		</script>
 

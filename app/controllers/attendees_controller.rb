@@ -13,6 +13,11 @@ class AttendeesController < ApplicationController
     @failed = @event.attendees.joins(:logs).where("cast(logs.json->>'timestamp' as float) = (select max(cast(json->>'timestamp' as float)) from logs where attendee_id = attendees.id)").where("logs.json->>'event' = ?", 'failed').where("logs.json->>'severity' = ?", 'permanent').count
     @warning = @event.attendees.joins(:logs).where("cast(logs.json->>'timestamp' as float) = (select max(cast(json->>'timestamp' as float)) from logs where attendee_id = attendees.id)").where("logs.json->>'event' = ?", 'failed').where("logs.json->>'severity' = ?", 'temporary').count
 
+    respond_to do |format|
+      format.html
+      format.json { render json: AttendeeDatatable.new(view_context) }
+    end
+
   end
 
   def new

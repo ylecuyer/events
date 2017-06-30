@@ -96,8 +96,6 @@ class AttendeesController < ApplicationController
 
     authorize attendee
 
-    attendee.is_processing_status_update = true
-
     mg_client = Mailgun::Client.new ENV['MAILGUN_API_KEY']
     mg_events = Mailgun::Events.new(mg_client, ENV['MAILGUN_DOMAIN'])
 

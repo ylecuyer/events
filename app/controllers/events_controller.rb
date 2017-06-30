@@ -78,8 +78,6 @@ class EventsController < ApplicationController
 
 		authorize event
 
-		event.attendees.update_all(is_processing_status_update: true)
-
 		CheckInvitationsStatusJob.perform_later(params[:id])
 
 		redirect_to event_attendees_path(params[:id]), notice: "Invitations status checking in progress"

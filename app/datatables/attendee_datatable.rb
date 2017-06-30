@@ -46,7 +46,7 @@ class AttendeeDatatable < AjaxDatatablesRails::Base
   def data
     records.map do |record|
       {
-        status: image_tag(record.status_icon_name, alt: record.invitation_status, title: record.invitation_status, style: "opacity: #{ if record.is_processing_status_update then 0.5 else 1 end}"),
+        status: image_tag(record.status_icon_name, alt: record.invitation_status, title: record.invitation_status),
         reference: record.reference,
         last_name: record.last_name,
         first_name: record.first_name,

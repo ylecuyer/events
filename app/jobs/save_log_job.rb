@@ -16,8 +16,6 @@ class SaveLogJob < ApplicationJob
     log.attendee = attendee
 
     log.save
-
-    attendee.is_processing_status_update = false
     attendee.save
   end
 end

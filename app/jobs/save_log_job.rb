@@ -17,13 +17,6 @@ class SaveLogJob < ApplicationJob
 
     log.save
 
-    str = item['event'] + " (#{Time.at(item['timestamp'].to_f)})"
-    if item['delivery-status']
-      str +=  " [#{item['delivery-status']['code']} / #{item['delivery-status']['message']}"
-      str +=	" / retry in #{item['delivery-status']['retry-seconds']} seconds" if item['delivery-status']['retry-seconds']
-      str +=  " ]"
-    end
-    attendee.invitation_status = str
     attendee.is_processing_status_update = false
     attendee.save
   end

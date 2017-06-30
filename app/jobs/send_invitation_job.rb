@@ -12,7 +12,6 @@ class SendInvitationJob < ApplicationJob
     result = MailGeneratorService.new(event: event, attendee: attendee).generate_and_send_now
 
     attendee.mailgun_id = result.to_h['id'][1..-2] #Remove < and > in <MAILGUN-ID>
-    attendee.invitation_status = "queued (#{Time.now})"
     attendee.save
   end
 end

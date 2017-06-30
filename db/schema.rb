@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170629152515) do
+ActiveRecord::Schema.define(version: 20170630162534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20170629152515) do
     t.integer "event_id"
     t.integer "category_id"
     t.string "reference"
-    t.string "invitation_status"
     t.string "mailgun_id"
     t.boolean "is_processing_status_update", default: false
     t.jsonb "extra_data", default: {}

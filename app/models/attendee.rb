@@ -13,18 +13,29 @@ class Attendee < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def invitation_status
+    
+    if log
+      str = log['event'] + " (#{Time.at(log['timestamp'].to_f)})"
+      if log['delivery-status']
+        str +=  " [#{log['delivery-status']['code']} / #{log['delivery-status']['message']} / #{log['delivery-status']['description']}"
+        str +=	" / retry in #{log['delivery-status']['retry-seconds']} seconds" if log['delivery-status']['retry-seconds']
+        str +=  " ]"
+      end
+    else
+      "queued"
+    end
+  end
+
   def status_icon_name
 
     return 'icons/new.png' if mailgun_id.blank?
     return 'icons/hourglass.png' if mailgun_id.present? && logs.empty?
 
-    last_log = logs.last
-    data = last_log.json
-
-    return 'icons/accept.png' if data['event'] == 'delivered'
-    return 'icons/exclamation.png' if data['severity'].present? && data['severity'] == 'permanent'
-    return 'icons/time.png' if data['event'] == 'accepted'
-    return 'icons/error.png' if data['severity'] == 'temporary' 
+    return 'icons/accept.png' if log['event'] == 'delivered'
+    return 'icons/exclamation.png' if log['severity'].present? && log['severity'] == 'permanent'
+    return 'icons/time.png' if log['event'] == 'accepted'
+    return 'icons/error.png' if log['severity'] == 'temporary' 
     return 'icons/question.gif'
   end
   

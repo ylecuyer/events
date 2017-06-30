@@ -211,14 +211,20 @@ class EventsController < ApplicationController
 	  @attendee = @event.attendees.where(reference: params[:ref]).first
 
 	  if @attendee 
-		  if @attendee.checkin_at.present?
-			  @success = false
-			  @message = "Already checked in"
-		  else
-			  @success = true
-			  @attendee.checkin_at = Time.now
-			  @attendee.save
+
+      if Time.now >= (@event.start - 2.hour)
+            if @attendee.checkin_at.present?
+              @success = false
+              @message = "Already checked in"
+            else
+              @success = true
+              @attendee.checkin_at = Time.now
+              @attendee.save
 	          end
+      else
+              @success = false
+              @message = "Barcode shouldn't be scanned before the event"
+      end
 	  else
 		  @success = false
 		  @message = "Not invited"

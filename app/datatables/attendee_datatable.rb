@@ -60,7 +60,7 @@ class AttendeeDatatable < AjaxDatatablesRails::Base
   private
 
   def get_raw_records
-    Attendee.joins(:category).all
+    Event.find(options[:event_id]).attendees.joins(:category).all
   end
 
   # ==== These methods represent the basic operations to perform on records

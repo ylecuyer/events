@@ -15,7 +15,7 @@ class AttendeesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: AttendeeDatatable.new(view_context) }
+      format.json { render json: AttendeeDatatable.new(view_context, {event_id: @event.id }) }
     end
 
   end

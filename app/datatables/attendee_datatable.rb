@@ -60,7 +60,7 @@ class AttendeeDatatable < AjaxDatatablesRails::Base
   private
 
   def get_raw_records
-    Event.find(options[:event_id]).attendees.joins(:category).all
+    Event.find(options[:event_id]).attendees.select('attendees.*, categories.name, logs.json as log').joins(:category).joins("LEFT JOIN logs ON logs.attendee_id = attendees.id").where("(cast(logs.json->>'timestamp' as float) = (select max(cast(json->>'timestamp' as float)) from logs where attendee_id = attendees.id) OR logs.json IS NULL)")
   end
 
   # ==== These methods represent the basic operations to perform on records

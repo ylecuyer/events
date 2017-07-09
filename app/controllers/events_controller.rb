@@ -208,25 +208,11 @@ class EventsController < ApplicationController
 	  @event = Event.find params[:id]
 	  @attendee = @event.attendees.where(reference: params[:ref]).first
 
-	  if @attendee 
+    ticket_validator = TicketValidatorService.new(event: @event, attendee: @attendee)
+    ticket_validator.validate
 
-      if Time.now >= (@event.start - 2.hour)
-            if @attendee.checkin_at.present?
-              @success = false
-              @message = "Already checked in"
-            else
-              @success = true
-              @attendee.checkin_at = Time.now
-              @attendee.save
-	          end
-      else
-              @success = false
-              @message = "Barcode shouldn't be scanned before the event"
-      end
-	  else
-		  @success = false
-		  @message = "Not invited"
-	  end
+    @is_valid = ticket_validator.is_valid?
+    @message = ticket_validator.message
 
 	  render layout: false
 	end

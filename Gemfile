@@ -23,6 +23,8 @@ end
 
 gem 'simplecov', :require => false, :group => :test
 gem 'mocha', require: false, group: :test
+gem 'capybara', require: false, group: :test
+gem 'timecop', group: :test
 
 group :development do
   gem 'web-console'

@@ -46,6 +46,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.5.1)
+      public_suffix (~> 2.0, >= 2.0.2)
     airbrussh (1.3.0)
       sshkit (>= 1.6.1, != 1.7.0)
     ajax-datatables-rails (0.4.0)
@@ -75,6 +77,13 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
+    capybara (2.14.4)
+      addressable
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
     chunky_png (1.3.8)
     climate_control (0.2.0)
     cocaine (0.5.8)
@@ -174,6 +183,7 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
     pg (0.21.0)
+    public_suffix (2.0.5)
     puma (3.9.1)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
@@ -270,6 +280,7 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.7)
+    timecop (0.9.1)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
     uglifier (3.2.0)
@@ -289,6 +300,8 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
     wicked_pdf (1.1.0)
+    xpath (2.1.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
@@ -303,6 +316,7 @@ DEPENDENCIES
   capistrano-passenger
   capistrano-rails
   capistrano-rvm
+  capybara
   ckeditor!
   coffee-rails
   devise
@@ -332,10 +346,11 @@ DEPENDENCIES
   simplecov
   spring
   spring-watcher-listen
+  timecop
   tzinfo-data
   uglifier
   web-console
   wicked_pdf
 
 BUNDLED WITH
-   1.14.6
+   1.15.1

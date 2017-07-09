@@ -1,0 +1,5 @@
+user:
+  email: 'user@example.com'
+
+admin:
+  email: 'admin@example.com'

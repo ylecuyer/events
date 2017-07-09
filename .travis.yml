@@ -1,3 +1,15 @@
 language: ruby
+cache: bundler
 rvm:
   - 2.4.0
+env:
+  global:
+    - RAILS_ENV=travis
+    - RACK_ENV=travis
+services:
+  - postgresql
+addons:
+  postgresql: "9.4"
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - bundle exec rake db:schema:load

@@ -16,8 +16,26 @@ services:
     depends_on:
       - db
       - gems
+      - spring
     volumes_from:
       - gems
+    environment:
+      - GEM_PATH=/ruby_gems
+      - GEM_HOME=/ruby_gems
+  spring:
+    build: 
+      context: .
+      dockerfile: docker/rails/Dockerfile
+    command: bundle exec spring server
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - gems
+    volumes_from:
+      - gems
+    environment:
+      - GEM_PATH=/ruby_gems
+      - GEM_HOME=/ruby_gems
   gems:
     image: busybox
     volumes:
@@ -36,6 +54,9 @@ services:
     volumes_from:
       - gems
     command: bundle exec sidekiq -c 5
+    environment:
+      - GEM_PATH=/ruby_gems
+      - GEM_HOME=/ruby_gems
   ngrok:
     tty: true
     build: 

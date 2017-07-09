@@ -21,6 +21,8 @@ group :development, :test do
   gem 'bullet'
 end
 
+gem 'simplecov', :require => false, :group => :test
+
 group :development do
   gem 'web-console'
   gem 'listen'

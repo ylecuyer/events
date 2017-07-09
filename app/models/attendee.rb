@@ -30,7 +30,7 @@ class Attendee < ApplicationRecord
   def status_icon_name
 
     return 'icons/new.png' if mailgun_id.blank?
-    return 'icons/hourglass.png' if mailgun_id.present? && logs.empty?
+    return 'icons/hourglass.png' if mailgun_id.present? && log.blank?
 
     return 'icons/accept.png' if log['event'] == 'delivered'
     return 'icons/exclamation.png' if log['severity'].present? && log['severity'] == 'permanent'

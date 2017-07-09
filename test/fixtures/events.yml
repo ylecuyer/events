@@ -1,7 +1,4 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  name: MyString
-
-two:
-  name: MyString
+first:
+  id: 1
+  name: "14 juillet"
+  start:  "2017-07-14 12:30:00"

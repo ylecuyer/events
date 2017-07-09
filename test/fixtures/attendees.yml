@@ -1,11 +1,110 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+ylecuyer:
+  first_name: "Yoann"
+  last_name: "Lecuyer"
+  email: "ylecuyer@example.com"
+  category: scac
+  event: first
 
-one:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
+eacero:
+  first_name: "Eduaerd"
+  last_name: "Acero"
+  email: "eacero@example.com"
+  category: scac
+  event: first
 
-two:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
+lfafanador:
+  first_name: "Luis Fernando"
+  last_name: "Afanador"
+  email: "lfafanador@example.com"
+  category: scac
+  event: first
+
+faraujovelez:
+  first_name: "Fernando"
+  last_name: "Araujo-Velez"
+  email: "faraujovelez@example.com"
+  category: scac
+  event: first
+
+jdhalleweyn:
+  first_name: "Johan"
+  last_name: "D'Halleweyn"
+  email: "jdhalleweyn@example.com"
+  category: scac
+  event: first
+
+ccamargo:
+  first_name: "Claudia"
+  last_name: "Camargo"
+  email: "ccamargo@example.com"
+  category: scac
+  event: first
+
+mcanorea:
+  first_name: "Marta"
+  last_name: "Canorea"
+  email: "mcanorea@example.com"
+  category: scac
+  event: first
+
+without_mailgun_id:
+  id: 1
+  first_name: "Carlos"
+  last_name: "Cabanillas"
+  email: "ccabanillas@example.com"
+  category: scac
+  event: first
+
+with_mailgun_id_but_no_logs:
+  id: 2
+  first_name: "Maria Alicia"
+  last_name: "Uribe"
+  email: "mauribe@example.com"
+  category: scac
+  event: first
+  mailgun_id: "20170628162200.69138.E270D3FD1068EAB7@mg.ambafrance.co"
+ 
+delivered:
+  id: 3
+  first_name: "Alexandra"
+  last_name: "Falla"
+  email: "afalla@example.com"
+  category: scac
+  event: first
+  mailgun_id: "20170628161907.87507.5622AD3D2475265C@mg.ambafrance.co"
+
+failed:
+  id: 4
+  first_name: "Juan Gustavo"
+  last_name: "Cobo"
+  email: "jgcobo@example.com"
+  category: scac
+  event: first
+  mailgun_id: "20170629192647.87724.3607256FD697A896@mg.ambafrance.co"
+
+accepted:
+  id: 5
+  first_name: "Alexandra"
+  last_name: "Falla"
+  email: "afalla@example.com"
+  category: scac
+  event: first
+  mailgun_id: "20170628161907.87507.5622AD3D2475265C@mg.ambafrance.co"
+
+temp_failure:
+  id: 6
+  first_name: "Beatriz"
+  last_name: "Gonzales"
+  email: "bgonzales@example.com"
+  category: scac
+  event: first
+  mailgun_id: "20170628161935.68680.DF0D02A3F4DBD1D6@mg.ambafrance.co"
+
+unknown_status:
+  id: 7
+  first_name: "Eric"
+  last_name: "Tremolada Alvarez"
+  email: "etremoladaalvarez@example.com"
+  category: scac
+  event: first
+  mailgun_id: "20170628163800.36228.888D92A2B0950A8D@mg.ambafrance.co"

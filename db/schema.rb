@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 20170630170657) do
     t.integer "category_id"
     t.string "reference"
     t.string "mailgun_id"
-    t.boolean "is_processing_status_update", default: false
     t.jsonb "extra_data", default: {}
     t.datetime "checkin_at"
     t.index ["category_id"], name: "index_attendees_on_category_id"

@@ -38,6 +38,7 @@ services:
       - GEM_HOME=/ruby_gems
   gems:
     image: busybox
+    command: tail -f /dev/null
     volumes:
       - /ruby_gems
   redis:

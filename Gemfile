@@ -22,6 +22,7 @@ group :development, :test do
 end
 
 gem 'simplecov', :require => false, :group => :test
+gem 'mocha', require: false, group: :test
 
 group :development do
   gem 'web-console'

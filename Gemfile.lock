@@ -146,6 +146,7 @@ GEM
       mime-types (>= 1.16, < 4)
     mailgun-ruby (1.1.6)
       rest-client (~> 2.0)
+    metaclass (0.0.4)
     method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
@@ -153,6 +154,8 @@ GEM
     mimemagic (0.3.2)
     mini_portile2 (2.2.0)
     minitest (5.10.2)
+    mocha (1.2.1)
+      metaclass (~> 0.0.1)
     multi_json (1.12.1)
     multipart-post (2.0.0)
     mustache (1.0.5)
@@ -312,6 +315,7 @@ DEPENDENCIES
   kaminari
   listen
   mailgun-ruby
+  mocha
   mustache
   paperclip
   pg

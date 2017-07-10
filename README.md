@@ -1,5 +1,5 @@
 [![Travis](https://img.shields.io/travis/ylecuyer/events.svg)]()
-[![VersionEye](https://img.shields.io/versioneye/d/ylecuyer/events.svg)]()
+[![VersionEye](https://img.shields.io/versioneye/d/user/projects/593b69d9368b08004e5145bb.svg)]()
 [![Code Climate](https://img.shields.io/codeclimate/github/ylecuyer/events.svg)]()
 [![Code Climate](https://img.shields.io/codeclimate/coverage/github/ylecuyer/events.svg)]()
 [![license](https://img.shields.io/github/license/ylecuyer/events.svg)]()

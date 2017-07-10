@@ -16,12 +16,8 @@ services:
     depends_on:
       - db
       - gems
-      - spring
     volumes_from:
       - gems
-    environment:
-      - GEM_PATH=/ruby_gems
-      - GEM_HOME=/ruby_gems
   spring:
     build: 
       context: .

@@ -10,7 +10,6 @@ services:
   - postgresql
 addons:
   postgresql: "9.4"
-addons:
   code_climate:
     repo_token: 998c82eddc27bf2bf76c184390d8cf38dd1930cdd95c91a4db21aaad6c1bae86
 before_script:

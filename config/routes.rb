@@ -36,6 +36,10 @@ Rails.application.routes.draw do
     resources :categories
   end
 
+  post 'mg/delivered' => 'mg#webhook'
+  post 'mg/dropped' => 'mg#webhook'
+  post 'mg/bounced' => 'mg#webhook'
+
   resources :users
 
   root "static#index"

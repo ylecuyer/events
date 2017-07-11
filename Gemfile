@@ -62,6 +62,7 @@ gem 'roo'
 gem 'roo-xls'
 gem 'mustache'
 gem 'json-formatter-rails'
+gem 'email_validator'
 
 gem 'jquery-datatables-rails'
 gem 'ajax-datatables-rails'

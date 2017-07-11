@@ -190,10 +190,15 @@ class EventsController < ApplicationController
 		@category = Category.find params[:category_id]
 		@send_invites = params[:send_invites] == "1"
 
-		open_uploaded_file
-		import_rows
+    begin
+      open_uploaded_file
+      rows = import_rows
+      redirect_to event_attendees_path(params[:id]), notice: "#{rows} attendees added"
+    rescue Exception => e
+      flash[:error] = "#{e.class} - #{e.message}"
+      render :import_csv
+    end
 
-		redirect_to event_attendees_path(params[:id]), notice: "Attendees added"
 	end
 
 	def mailtester
@@ -227,11 +232,13 @@ class EventsController < ApplicationController
 			attendee = Attendee.create!(row) 
 			SendInvitationJob.perform_later(@event.id, attendee.id) if @send_invites
 		end
+    @spreadsheet.last_row - 1
 	end
 
 	def open_uploaded_file
 		get_spreadsheet
 		get_header_from_spreadsheet
+    check_file
 	end
 
 	def check_file
@@ -253,7 +260,7 @@ class EventsController < ApplicationController
 		raise "first_name can't be empty in row ##{row_number}" if row_data["first_name"].blank?
 		raise "last_name can't be empty in row ##{row_number}" if row_data["last_name"].blank?
 		raise "email can't be empty in row ##{row_number}" if row_data["email"].blank?
-		#raise "email(#{row_data["email"]}) is malformed in row ##{row_number}" unless EmailValidator.valid?(row_data["email"])
+		raise "email(#{row_data["email"]}) is malformed in row ##{row_number}" unless EmailValidator.valid?(row_data["email"])
 	end
 
 	def check_header(header)

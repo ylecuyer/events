@@ -108,6 +108,8 @@ GEM
     docile (1.1.5)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
+    email_validator (1.6.0)
+      activemodel
     erubi (1.6.1)
     execjs (2.7.0)
     faraday (0.12.1)
@@ -323,6 +325,7 @@ DEPENDENCIES
   codeclimate-test-reporter
   coffee-rails
   devise
+  email_validator
   faraday
   figaro
   jbuilder

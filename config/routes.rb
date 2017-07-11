@@ -16,7 +16,6 @@ Rails.application.routes.draw do
 
       get 'print_list', as: 'print_list'
       get 'checkin', as: 'checkin'
-      get 'checkin_scan', as: 'checkin_scan'
       post 'send_invitations', as: 'send_invitations'
       post 'check_invitations_status', as: 'check_invitations_status'
       post 'send_test_mail', as: 'send_test_mail'

@@ -102,13 +102,6 @@ class EventsController < ApplicationController
 	def checkin
 		@event = Event.find params[:id]
 		authorize @event
-		render layout: false
-	end
-
-	def checkin_scan
-		@event = Event.find params[:id]
-		authorize @event
-		render layout: false
 	end
 
 	def print_list

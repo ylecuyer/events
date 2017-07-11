@@ -66,11 +66,7 @@ class EventPolicy < ApplicationPolicy
   end
 
   def checkin?
-    update?
-  end
-
-  def checkin_scan?
-    update?
+    show?
   end
 
   def validate?

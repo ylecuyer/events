@@ -1,25 +1,14 @@
-<!doctype html>
-<html>
-<head>
-    <title>
-	    <%= @event.name %>
-    </title>
-</head>
-<body>
+<h1>iPhone</h1>
 
-	<%= link_to 'Scan QR Code', checkin_scan_event_path %>
+<%= image_tag 'docs/iphone/app_store.png' %>
+<%= image_tag 'docs/iphone/config.png' %>
+<%= image_tag 'docs/iphone/scan.png' %>
+<%= image_tag 'docs/iphone/result.png' %>
 
-	<% @event.attendees.includes(:category).order('last_name ASC, first_name ASC').each do |attendee| %>
+<h1>Android</h1>
 
-		<div>
-			<%= attendee.full_name %><br/>
-			<%= attendee.reference %><br/>
-			<%= attendee.category.name %>
-		</div>
-		<br/>
-
-	<% end %>
-
-</body>
-</html>
+<%= image_tag 'docs/android/play_store.png' %>
+<%= image_tag 'docs/android/config.png' %>
+<%= image_tag 'docs/android/scan.png' %>
+<%= image_tag 'docs/android/result.png' %>
 

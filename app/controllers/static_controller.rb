@@ -1,6 +1,6 @@
 class StaticController < ApplicationController
 
-  skip_before_action :authenticate_user!, only: [:validate]
+  skip_before_action :authenticate_user!, only: [:example_validate]
 
   def index
     authorize :static, :show?

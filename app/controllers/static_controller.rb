@@ -22,12 +22,12 @@ class StaticController < ApplicationController
 
     authorize :static, :show?
 
-    case params[:code]
+    case params[:ref]
     when 'VALID'
       @is_valid = true
       @message = ""
       category = Category.new
-      category.name = params[:code]
+      category.name = params[:ref]
 
       @attendee = Attendee.new
       @attendee.last_name = "Lecuyer"

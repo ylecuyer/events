@@ -119,6 +119,8 @@ GEM
       thor (~> 0.14)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    highcharts-rails (5.0.7)
+      railties (>= 3.1)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.8.5)
@@ -328,6 +330,7 @@ DEPENDENCIES
   email_validator
   faraday
   figaro
+  highcharts-rails
   jbuilder
   jquery-datatables-rails
   jquery-rails

@@ -76,4 +76,8 @@ class EventPolicy < ApplicationPolicy
   def validate?
     update?
   end
+  
+  def live?
+    show?
+  end
 end

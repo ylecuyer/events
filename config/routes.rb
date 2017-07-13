@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :events do
     member do
+      get 'live', as: 'live'
       get 'validate', as: 'validate'
       get 'ticket', as: 'ticket'
 

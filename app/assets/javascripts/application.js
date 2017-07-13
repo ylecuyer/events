@@ -17,3 +17,5 @@
 //= require json-formatter
 //= require ckeditor/init
 //= require instascan.min
+//= require highcharts
+

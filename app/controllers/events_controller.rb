@@ -237,6 +237,14 @@ class EventsController < ApplicationController
     render "attendees/ticket", layout: false, locals: { attendee: @attendee, event: @event, qrcode: @qrcode }
   end
 
+  def live
+	  @event = Event.find params[:id]
+    authorize @event
+
+    @checkedin = @event.attendees.where.not(checkin_at: nil).count
+    @total = @event.attendees.count
+  end
+
 	private
 
 	def import_rows

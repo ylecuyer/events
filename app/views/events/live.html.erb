@@ -1,0 +1,55 @@
+<%= @checkedin %> / <%= @total %> (<%= (@checkedin / (@total+0.0)*100).round(2) %> %)
+
+<div id="container"></div>
+
+  <script type="text/javascript">
+
+
+  Highcharts.chart('container', {
+    chart: {
+        type: 'bar'
+    },
+    title: {
+        text: 'Checked in attendees'
+    },
+    xAxis: {
+        categories: <%= raw @event.categories.pluck(:name).to_s %>,
+        title: {
+            text: null
+        }
+    },
+    yAxis: {
+        min: 0,
+      allowDecimals: false,
+        title: {
+          text: null
+        }
+    },
+    plotOptions: {
+        bar: {
+            animation: false,
+            dataLabels: {
+                enabled: true
+            }
+        }
+    },
+    legend: {
+      enabled: false
+    },
+    credits: {
+        enabled: false
+    },
+    series: [
+    {
+      data: <%= raw @event.categories.map { |c| c.attendees.where.not(checkin_at: nil).count }.to_s %>
+    },
+    ]
+});
+
+  </script>
+
+ <script type="text/javascript">
+setInterval(function() {
+    window.location.reload();
+}, 120000); 
+ </script>

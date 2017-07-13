@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :events do
     member do
       get 'validate', as: 'validate'
+      get 'ticket', as: 'ticket'
 
       get 'mailtester', as: 'mailtester'
       post 'do_mailtester', as: 'do_mailtester'
@@ -44,5 +45,6 @@ Rails.application.routes.draw do
   root "static#index"
 
   get 'configuration', to: 'static#configuration', as: 'configuration'
+  get 'example_validate', to: 'static#example_validate', as: 'example_validate'
 
 end

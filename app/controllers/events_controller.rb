@@ -215,6 +215,28 @@ class EventsController < ApplicationController
 	  render layout: false
 	end
 
+  def ticket
+    authorize Event
+    code = params[:code]
+
+    category = Category.new
+    category.name = code
+
+    @attendee = Attendee.new
+    @attendee.last_name = "Lecuyer"
+    @attendee.first_name = "Yoann"
+    @attendee.reference = "DUMMY"
+    @attendee.category = category
+
+    @event = Event.new
+    @event.name = "Fête nationale"
+    @event.venue = "Residence de France"
+    @event.start = "2017-07-14 12:30"
+
+    @qrcode = RQRCode::QRCode.new("http://attendize.ambafrance.co/example_validate?ref=#{code}")
+    render "attendees/ticket", layout: false, locals: { attendee: @attendee, event: @event, qrcode: @qrcode }
+  end
+
 	private
 
 	def import_rows

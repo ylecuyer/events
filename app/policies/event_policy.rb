@@ -69,6 +69,10 @@ class EventPolicy < ApplicationPolicy
     show?
   end
 
+  def ticket?
+    show?
+  end
+
   def validate?
     update?
   end

@@ -10,24 +10,6 @@ body {
 	background-color: <% if @success %>#1fa67a<% else %>#a61f4b<% end %>;
 }
 
-.sticky {
-	position: absolute;
-	width: 100%;
-	bottom: 0;
-	left: 0;
-	height: 15%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.button {
-	width: 80%;
-	text-align: center;
-	padding: 10px;
-	background-color: #FFF;
-}
-
 .content {
 	height: 85%;
 	display: flex;
@@ -58,10 +40,6 @@ body {
 
 			<p><%= @message %></p>
 		</div>
-	</div>
-
-	<div class="sticky">
-		<a class="button" onclick="window.close()">Scan another ticket</a>
 	</div>
 </body>
 </html>

@@ -40,4 +40,8 @@ class AttendeePolicy < ApplicationPolicy
   def send_invitation?
     update?
   end
+
+  def checkin?
+    update?
+  end
 end

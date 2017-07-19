@@ -32,6 +32,7 @@ Rails.application.routes.draw do
         post 'check_invitation_status', as: 'check_invitation_status'
         get 'ticket', as: 'ticket'
         get 'logs', as: 'logs'
+        get 'checkin', as: 'checkin'
       end
     end
     resources :categories

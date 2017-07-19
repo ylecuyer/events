@@ -8,6 +8,7 @@ class AttendeeDatatable < AjaxDatatablesRails::Base
   def_delegator :@view, :send_invitation_event_attendee_path
   def_delegator :@view, :check_invitation_status_event_attendee_path
   def_delegator :@view, :logs_event_attendee_path
+  def_delegator :@view, :checkin_event_attendee_path
 
   def actions(record)
     str = ""
@@ -24,6 +25,13 @@ class AttendeeDatatable < AjaxDatatablesRails::Base
     str += link_to logs_event_attendee_path(record.event_id, record), class: "btn btn-sm btn-secondary" do
       '<i class="fa fa-file-text-o" aria-hidden="true"></i> View logs'.html_safe
     end
+
+    unless record.checkin_at
+      str += link_to checkin_event_attendee_path(record.event_id, record), class: "btn btn-sm btn-secondary" do
+        '<i class="fa fa-check-circle" aria-hidden="true"></i> Checkin'.html_safe
+      end
+    end
+
     str.html_safe
   end
 

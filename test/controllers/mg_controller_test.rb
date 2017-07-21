@@ -27,7 +27,7 @@ class MgControllerTest < ActionDispatch::IntegrationTest
 
     Timecop.freeze do
       assert_enqueued_with(job: UpdateStatusJob, args: [message_id], at: 30.seconds.from_now) do
-        post '/mg/delivered', params: params
+        post '/mg/bounced', params: params
       end
     end
 

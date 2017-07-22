@@ -66,6 +66,16 @@ class AttendeeTest < ActiveSupport::TestCase
     assert_equal "failed (2017-06-28 16:19:35 +0000) [498 / No MX for latinmail.com / No MX for latinmail.com / retry in 600 seconds ]", attendee.invitation_status
   end
 
+  test "checkin attendee" do
+    Timecop.freeze do
+      attendee = attendees(:ylecuyer)
+
+      attendee.checkin!
+
+      assert_equal Time.now, attendee.checkin_at
+    end
+  end
+
   # test "the truth" do
   #   assert true
   # end

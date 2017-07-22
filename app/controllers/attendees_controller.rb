@@ -123,8 +123,7 @@ class AttendeesController < ApplicationController
     attendee = Attendee.find params[:id]
     authorize attendee
 
-    attendee.checkin_at = Time.now
-    attendee.save
+    attendee.checkin!
 
     redirect_to event_attendees_path(params[:event_id])
   end

@@ -27,8 +27,7 @@ class TicketValidatorService
         @is_valid = true
         @message = ""
 
-        @attendee.checkin_at = Time.now
-        @attendee.save
+        @attendee.checkin!
       end
     else
       @is_valid = false

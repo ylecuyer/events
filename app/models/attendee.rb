@@ -38,6 +38,11 @@ class Attendee < ApplicationRecord
     return 'icons/error.png' if log['severity'] == 'temporary' 
     return 'icons/question.gif'
   end
+
+  def checkin!
+    self.checkin_at = Time.now
+    save
+  end
   
   private
 

@@ -20,7 +20,9 @@ class CsvImporterService
 			row[:event] = @event
 			row[:category] = @category
 			attendee = Attendee.create!(row) 
-			SendInvitationJob.perform_later(@event.id, attendee.id) if @send_invites
+      if @send_invites
+        SendInvitationJob.perform_later(@event.id, attendee.id)
+      end
 		end
     @spreadsheet.last_row - 1
 	end
@@ -47,10 +49,21 @@ class CsvImporterService
 	end
 
 	def check_row(row_number, row_data)
-		raise "first_name can't be empty in row ##{row_number}" if row_data["first_name"].blank?
-		raise "last_name can't be empty in row ##{row_number}" if row_data["last_name"].blank?
-		raise "email can't be empty in row ##{row_number}" if row_data["email"].blank?
-		raise "email(#{row_data["email"]}) is malformed in row ##{row_number}" unless EmailValidator.valid?(row_data["email"])
+		if row_data["first_name"].blank?
+      raise "first_name can't be empty in row ##{row_number}" 
+    end
+
+    if row_data["last_name"].blank?
+      raise "last_name can't be empty in row ##{row_number}"
+    end
+
+    if row_data["email"].blank?
+      raise "email can't be empty in row ##{row_number}"
+    end
+
+    unless EmailValidator.valid?(row_data["email"])
+      raise "email(#{row_data["email"]}) is malformed in row ##{row_number}"
+    end
 	end
 
 	def check_header(header)

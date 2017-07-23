@@ -22,22 +22,13 @@ class StaticController < ApplicationController
 
     authorize :static, :show?
 
-    case params[:ref]
-    when 'VALID'
-      @is_valid = true
-      @message = ""
-      @attendee = Attendee.dummy
-    when 'ALRDY'
-      @is_valid = false
-      @message = "Already checked in"
-    when 'BEFORE'
-      @is_valid = false
-      @message = "Barcode shouldn't be scanned before the event"
-    when 'NOTINV'
-      @is_valid = false
-      @message = "Not invited"
-    end
+    fake_ticket_validator = FakeTicketValidatorService.new(ref: params[:ref])
+    fake_ticket_validator.validate
 
+    @attendee = fake_ticket_validator.attendee
+    @is_valid = fake_ticket_validator.is_valid?
+    @message = fake_ticket_validator.message
+      
     render 'events/validate', layout: false
   end
 end

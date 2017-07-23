@@ -13,12 +13,7 @@ class EventsController < ApplicationController
 	# GET /events/1
 	# GET /events/1.json
 	def show
-
 		authorize @event
-
-		@attendee = Attendee.new
-		@category = Category.new
-
 	end
 
 	# GET /events/new

@@ -11,4 +11,12 @@ class Event < ApplicationRecord
   def tag
     "Event-#{id}"
   end
+
+  def self.dummy
+    event = Event.new
+    event.name = "Fête nationale"
+    event.venue = "Residence de France"
+    event.start = "2017-07-14 12:30"
+    event
+  end
 end

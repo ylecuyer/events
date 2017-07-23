@@ -26,14 +26,7 @@ class StaticController < ApplicationController
     when 'VALID'
       @is_valid = true
       @message = ""
-      category = Category.new
-      category.name = params[:ref]
-
-      @attendee = Attendee.new
-      @attendee.last_name = "Lecuyer"
-      @attendee.first_name = "Yoann"
-      @attendee.reference = "DUMMY"
-      @attendee.category = category
+      @attendee = Attendee.dummy
     when 'ALRDY'
       @is_valid = false
       @message = "Already checked in"

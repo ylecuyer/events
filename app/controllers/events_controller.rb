@@ -114,7 +114,8 @@ class EventsController < ApplicationController
 
 		event = Event.find params[:id]
 		authorize event
-		attendee = Attendee.new(first_name: "DummyFirstName", last_name: "DummyLastName", reference: "DUMMYX", category: Category.new(name: "Dummy"))
+
+    attendee = Attendee.dummy
 		to = "#{ENV['MAILTESTER_LOGIN']}-Event#{event.id}@mail-tester.com"
 
 		MailGeneratorService.new(event: event, attendee: attendee, to: to).generate_and_send_now 
@@ -128,7 +129,7 @@ class EventsController < ApplicationController
 		authorize event
 		email = params[:email]
 
-		attendee = Attendee.new(first_name: "DummyFirstName", last_name: "DummyLastName", reference: "DUMMYX", category: Category.new(name: "dummy"))
+		attendee = Attendee.dummy
 		
 		MailGeneratorService.new(event: event, attendee: attendee, to: email).generate_and_send_now
 
@@ -219,22 +220,10 @@ class EventsController < ApplicationController
     authorize Event
     code = params[:code]
 
-    category = Category.new
-    category.name = code
-
-    @attendee = Attendee.new
-    @attendee.last_name = "Lecuyer"
-    @attendee.first_name = "Yoann"
-    @attendee.reference = "DUMMY"
-    @attendee.category = category
-
-    @event = Event.new
-    @event.name = "Fête nationale"
-    @event.venue = "Residence de France"
-    @event.start = "2017-07-14 12:30"
+    @attendee = Attendee.dummy
 
     @qrcode = RQRCode::QRCode.new("http://attendize.ambafrance.co/example_validate?ref=#{code}")
-    render "attendees/ticket", layout: false, locals: { attendee: @attendee, event: @event, qrcode: @qrcode }
+    render "attendees/ticket", layout: false, locals: { attendee: @attendee, event: @attendee.event, qrcode: @qrcode }
   end
 
   def live

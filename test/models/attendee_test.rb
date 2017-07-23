@@ -1,6 +1,18 @@
 require 'test_helper'
 
 class AttendeeTest < ActiveSupport::TestCase
+
+  test "dummy attendee" do
+
+    dummy_attendee = Attendee.dummy
+
+
+    assert_equal "DummyLastName", dummy_attendee.last_name
+    assert_equal "DummyFirstName", dummy_attendee.first_name
+    assert_equal "DUMMYX", dummy_attendee.reference
+    assert_equal Category.dummy.attributes, dummy_attendee.category.attributes
+    assert_equal Event.dummy.attributes, dummy_attendee.event.attributes
+  end
  
   test "full_name is first_name then last_name" do
     attendee = Attendee.new(first_name: "Yoann", last_name: "Lecuyer")

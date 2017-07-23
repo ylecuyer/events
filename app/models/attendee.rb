@@ -43,6 +43,19 @@ class Attendee < ApplicationRecord
     self.checkin_at = Time.now
     save
   end
+
+  def self.dummy
+    attendee = Attendee.new
+
+    attendee.last_name = "DummyLastName"
+    attendee.first_name = "DummyFirstName"
+    attendee.reference = "DUMMYX"
+
+    attendee.category = Category.dummy
+    attendee.event = Event.dummy
+
+    attendee
+  end
   
   private
 

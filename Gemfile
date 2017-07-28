@@ -23,7 +23,6 @@ group :development, :test do
 end
 
 gem 'simplecov', :require => false, :group => :test
-gem 'codeclimate-test-reporter', :require => false, :group => :test
 gem 'mocha', require: false, group: :test
 gem 'capybara', require: false, group: :test
 gem 'timecop', require: false, group: :test

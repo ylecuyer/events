@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id                 :integer          not null, primary key
+#  name               :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  model              :text
+#  start              :datetime
+#  end                :datetime
+#  venue              :string
+#  subject            :string
+#  image_file_name    :string
+#  image_content_type :string
+#  image_file_size    :integer
+#  image_updated_at   :datetime
+#
+
 first:
   id: 1
   name: "14 juillet"

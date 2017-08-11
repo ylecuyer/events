@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: logs
+#
+#  id          :integer          not null, primary key
+#  internal_id :string
+#  json        :jsonb
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  timestamp   :float
+#  attendee_id :integer
+#
+# Indexes
+#
+#  index_logs_on_attendee_id  (attendee_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (attendee_id => attendees.id)
+#
+
 a:
   internal_id: "i915B12rT2WIcGlfZZXx8g" 
   json: {"id":"i915B12rT2WIcGlfZZXx8g","tags":["Event-1"],"event":"accepted","flags":{"is-routed":false,"is-test-mode":false,"is-system-test":false,"is-authenticated":true},"method":"http","message":{"size":669028,"headers":{"to":"coboborda@hotmail.com","from":"'RECEPTION Bogota-Amba' \u003creception.bogota.amba@gmail.com\u003e","subject":"Embajada de Francia-Invitación recepción Fiesta Nacional-14/07/17-12:30","message-id":"20170629192647.87724.3607256FD697A896@mg.ambafrance.co"},"attachments":[{"size":35846,"filename":"ticket.pdf","content-type":"application/pdf"}]},"storage":{"key":"eyJwIjp0cnVlLCJrIjoiMzNhNjEyOGYtN2YxMy00Y2U4LTk1NzQtNjM3NGZjMTk4MmYwIiwicyI6IjBjMmZhNTE4MzUiLCJjIjoiYmlndGFua2IifQ==","url":"https://sw.api.mailgun.net/v3/domains/mg.ambafrance.co/messages/eyJwIjp0cnVlLCJrIjoiMzNhNjEyOGYtN2YxMy00Y2U4LTk1NzQtNjM3NGZjMTk4MmYwIiwicyI6IjBjMmZhNTE4MzUiLCJjIjoiYmlndGFua2IifQ=="},"envelope":{"sender":"postmaster@mg.ambafrance.co","targets":"coboborda@hotmail.com","transport":"smtp"},"campaigns":[],"log-level":"info","recipient":"coboborda@hotmail.com","timestamp":1498764407.900458,"user-variables":{},"recipient-domain":"hotmail.com"}

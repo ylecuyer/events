@@ -1,3 +1,31 @@
+# == Schema Information
+#
+# Table name: attendees
+#
+#  id          :integer          not null, primary key
+#  first_name  :string
+#  last_name   :string
+#  email       :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  event_id    :integer
+#  category_id :integer
+#  reference   :string
+#  mailgun_id  :string
+#  extra_data  :jsonb
+#  checkin_at  :datetime
+#
+# Indexes
+#
+#  index_attendees_on_category_id  (category_id)
+#  index_attendees_on_event_id     (event_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (category_id => categories.id)
+#  fk_rails_...  (event_id => events.id)
+#
+
 class Attendee < ApplicationRecord
 
   before_create :save_reference	

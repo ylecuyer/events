@@ -1,8 +1,8 @@
 # config valid only for current version of Capistrano
-lock "3.8.1"
+lock '3.8.1'
 
-set :application, "attendize"
-set :repo_url, "git@github.com:ylecuyer/events.git"
+set :application, 'attendize'
+set :repo_url, 'git@github.com:ylecuyer/events.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

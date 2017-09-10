@@ -4,7 +4,7 @@ class SaveLogJob < ApplicationJob
   def perform(*args)
     item = args[0]
 
-    attendee = Attendee.find_by_mailgun_id(item['message']['headers']['message-id'])
+    attendee = Attendee.find_by(mailgun_id: item['message']['headers']['message-id'])
 
     return unless attendee
 

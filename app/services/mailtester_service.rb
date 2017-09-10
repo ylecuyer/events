@@ -1,7 +1,6 @@
 class MailtesterService
-
   def initialize(params)
-   @event = params[:event] 
+    @event = params[:event]
   end
 
   def result
@@ -14,5 +13,4 @@ class MailtesterService
   def url
     "https://www.mail-tester.com/#{ENV['MAILTESTER_LOGIN']}-Event#{@event.id}&format=json"
   end
-
 end

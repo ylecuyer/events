@@ -68,7 +68,7 @@
 #                                   root GET    /                                                                 static#index
 #                          configuration GET    /configuration(.:format)                                          static#configuration
 #                       example_validate GET    /example_validate(.:format)                                       static#example_validate
-# 
+#
 # Routes for Ckeditor::Engine:
 #         pictures GET    /pictures(.:format)             ckeditor/pictures#index
 #                  POST   /pictures(.:format)             ckeditor/pictures#create
@@ -76,10 +76,9 @@
 # attachment_files GET    /attachment_files(.:format)     ckeditor/attachment_files#index
 #                  POST   /attachment_files(.:format)     ckeditor/attachment_files#create
 #  attachment_file DELETE /attachment_files/:id(.:format) ckeditor/attachment_files#destroy
-# 
+#
 
 Rails.application.routes.draw do
-
   devise_for :users, skip: [:registration]
 
   mount Ckeditor::Engine => '/ckeditor'
@@ -124,9 +123,8 @@ Rails.application.routes.draw do
 
   resources :users
 
-  root "static#index"
+  root 'static#index'
 
   get 'configuration', to: 'static#configuration', as: 'configuration'
   get 'example_validate', to: 'static#example_validate', as: 'example_validate'
-
 end

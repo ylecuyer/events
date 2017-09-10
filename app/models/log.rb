@@ -20,5 +20,5 @@
 #
 
 class Log < ApplicationRecord
-	belongs_to :attendee
+  belongs_to :attendee
 end

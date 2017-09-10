@@ -27,8 +27,7 @@
 #
 
 class Attendee < ApplicationRecord
-
-  before_create :save_reference	
+  before_create :save_reference
 
   belongs_to :category
   belongs_to :event
@@ -42,29 +41,27 @@ class Attendee < ApplicationRecord
   end
 
   def invitation_status
-    
     if log
       str = log['event'] + " (#{Time.at(log['timestamp'].to_f)})"
       if log['delivery-status']
-        str +=  " [#{log['delivery-status']['code']} / #{log['delivery-status']['message']} / #{log['delivery-status']['description']}"
+        str += " [#{log['delivery-status']['code']} / #{log['delivery-status']['message']} / #{log['delivery-status']['description']}"
         str +=	" / retry in #{log['delivery-status']['retry-seconds']} seconds" if log['delivery-status']['retry-seconds']
-        str +=  " ]"
+        str += ' ]'
       end
     else
-      "queued"
+      'queued'
     end
   end
 
   def status_icon_name
-
     return 'icons/new.png' if mailgun_id.blank?
     return 'icons/hourglass.png' if mailgun_id.present? && log.blank?
 
     return 'icons/accept.png' if log['event'] == 'delivered'
     return 'icons/exclamation.png' if log['severity'].present? && log['severity'] == 'permanent'
     return 'icons/time.png' if log['event'] == 'accepted'
-    return 'icons/error.png' if log['severity'] == 'temporary' 
-    return 'icons/question.gif'
+    return 'icons/error.png' if log['severity'] == 'temporary'
+    'icons/question.gif'
   end
 
   def checkin!
@@ -75,16 +72,16 @@ class Attendee < ApplicationRecord
   def self.dummy
     attendee = Attendee.new
 
-    attendee.last_name = "DummyLastName"
-    attendee.first_name = "DummyFirstName"
-    attendee.reference = "DUMMYX"
+    attendee.last_name = 'DummyLastName'
+    attendee.first_name = 'DummyFirstName'
+    attendee.reference = 'DUMMYX'
 
     attendee.category = Category.dummy
     attendee.event = Event.dummy
 
     attendee
   end
-  
+
   private
 
   def save_reference
@@ -98,7 +95,7 @@ class Attendee < ApplicationRecord
   end
 
   def generate_reference(size = 6)
-    charset = %w{ 2 3 4 6 7 9 A C D E F G H J K M N P Q R T V W X Y Z}
-    (0...size).map{ charset.to_a[rand(charset.size)] }.join
+    charset = %w{2 3 4 6 7 9 A C D E F G H J K M N P Q R T V W X Y Z}
+    (0...size).map { charset.to_a[rand(charset.size)] }.join
   end
 end

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   include Pundit
-  after_action :verify_authorized, unless: lambda { devise_controller? || ckeditor_controller? || mg_controller?}
+  after_action :verify_authorized, unless: -> { devise_controller? || ckeditor_controller? || mg_controller? }
 
   private
 
@@ -14,11 +14,10 @@ class ApplicationController < ActionController::Base
   end
 
   def ckeditor_controller?
-    is_a?(Ckeditor::ApplicationController) 
+    is_a?(Ckeditor::ApplicationController)
   end
 
   def mg_controller?
     is_a?(MgController)
   end
-
 end

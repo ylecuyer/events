@@ -63,5 +63,5 @@ Rails.application.configure do
     Bullet.add_footer = true
   end
 
-  config.time_zone = "America/Bogota"
+  config.time_zone = 'America/Bogota'
 end

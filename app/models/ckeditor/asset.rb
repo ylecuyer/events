@@ -18,7 +18,7 @@
 #  index_ckeditor_assets_on_type  (type)
 #
 
-class Ckeditor::Asset < ActiveRecord::Base
+class Ckeditor::Asset < ApplicationRecord
   include Ckeditor::Orm::ActiveRecord::AssetBase
   include Ckeditor::Backend::Paperclip
 end

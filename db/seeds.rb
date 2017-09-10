@@ -6,16 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Event.create!(name: "Fête nationale", start: "2017-05-24 13:00", venue: "Résidence de France", subject: "Invitation 14 Juillet")
+Event.create!(name: 'Fête nationale', start: '2017-05-24 13:00', venue: 'Résidence de France', subject: 'Invitation 14 Juillet')
 
-Category.create!(event: Event.first, name: "SCAC")
-Category.create!(event: Event.first, name: "SCG")
-Category.create!(event: Event.first, name: "SSI")
-Category.create!(event: Event.first, name: "SEMA")
-Category.create!(event: Event.first, name: "DUA")
-Category.create!(event: Event.first, name: "CHAN")
-Category.create!(event: Event.first, name: "PRESSE")
-
+Category.create!(event: Event.first, name: 'SCAC')
+Category.create!(event: Event.first, name: 'SCG')
+Category.create!(event: Event.first, name: 'SSI')
+Category.create!(event: Event.first, name: 'SEMA')
+Category.create!(event: Event.first, name: 'DUA')
+Category.create!(event: Event.first, name: 'CHAN')
+Category.create!(event: Event.first, name: 'PRESSE')
 
 Attendee.create!(category: Category.order('RANDOM()').first, email: 'yoann.lecuyer@gmail.com', event: Event.first, first_name: 'Yoann', last_name: 'Lecuyer')
 Attendee.create!(category: Category.order('RANDOM()').first, email: 'yoann.lecuyer@gmail.com', event: Event.first, first_name: 'Claude', last_name: 'Lecuyer')
@@ -337,6 +336,5 @@ Attendee.create!(category: Category.order('RANDOM()').first, email: 'yoann.lecuy
 Attendee.create!(category: Category.order('RANDOM()').first, email: 'yoann.lecuyer@gmail.com', event: Event.first, first_name: 'Ana', last_name: 'Arizabaleta ')
 Attendee.create!(category: Category.order('RANDOM()').first, email: 'yoann.lecuyer@gmail.com', event: Event.first, first_name: 'Esteban ', last_name: 'Reyes ')
 
-user = User.create(email: "user@example.com", password: "changeme", password_confirmation: "changeme")
+user = User.create(email: 'user@example.com', password: 'changeme', password_confirmation: 'changeme')
 user.add_role :admin
-

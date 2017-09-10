@@ -1,12 +1,11 @@
-require "application_system_test_case"
+require 'application_system_test_case'
 
 class EventsTest < ApplicationSystemTestCase
-
   setup do
-     login_as(users(:user), :scope => :user)
+    login_as(users(:user), scope: :user)
   end
 
-  test "Show upcoming events" do
+  test 'Show upcoming events' do
     event = events(:first)
 
     Timecop.freeze(event.start - 1.day) do
@@ -17,11 +16,11 @@ class EventsTest < ApplicationSystemTestCase
     end
   end
 
-  test "Show None when there is no upcoming event" do
-    Timecop.freeze(Time.now + 100.year) do
+  test 'Show None when there is no upcoming event' do
+    Timecop.freeze(Time.now + 100.years) do
       visit events_url
       within('nav', match: :first) do
-        assert_selector '.dropdown-item', text: "None"
+        assert_selector '.dropdown-item', text: 'None'
       end
     end
   end

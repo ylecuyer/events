@@ -1,8 +1,7 @@
 class CategoriesController < ApplicationController
   def create
-
     authorize Category
- 
+
     @event = Event.find params[:event_id]
     @attendee = Attendee.new
 
@@ -18,9 +17,9 @@ class CategoriesController < ApplicationController
   end
 
   def new
-	  @event = Event.find params[:event_id]
-	  @category = Category.new
-	  authorize @category
+    @event = Event.find params[:event_id]
+    @category = Category.new
+    authorize @category
   end
 
   def index
@@ -30,25 +29,26 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-	  @event = Event.find params[:event_id]
-	  @category = Category.find params[:id]
-	  authorize @category
+    @event = Event.find params[:event_id]
+    @category = Category.find params[:id]
+    authorize @category
   end
 
   def update
-	  @event = Event.find params[:event_id]
-	  @category = Category.find params[:id]
-		authorize @event
+    @event = Event.find params[:event_id]
+    @category = Category.find params[:id]
+    authorize @event
 
     if @category.update(category_params)
-      redirect_to event_categories_path(@event), notice: 'Category was successfully updated.' 
+      redirect_to event_categories_path(@event), notice: 'Category was successfully updated.'
     else
       render :edit
     end
   end
 
   private
-    def category_params
-      params.require(:category).permit(:name)
-    end
+
+  def category_params
+    params.require(:category).permit(:name)
+  end
 end

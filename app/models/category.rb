@@ -26,7 +26,7 @@ class Category < ApplicationRecord
 
   def self.dummy
     category = Category.new
-    category.name = "DUMMY"
+    category.name = 'DUMMY'
     category
   end
 end

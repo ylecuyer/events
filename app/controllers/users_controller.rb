@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     authorize User
     @user = User.new(user_params)
 
-    if params[:user][:is_admin] == "1"
+    if params[:user][:is_admin] == '1'
       @user.add_role(:admin)
     else
       @user.remove_role(:admin)
@@ -51,11 +51,10 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-
     authorize @user
 
     @user.attributes = user_params
-    if params[:user][:is_admin] == "1"
+    if params[:user][:is_admin] == '1'
       @user.add_role(:admin)
     else
       @user.remove_role(:admin)
@@ -84,13 +83,14 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
+  end
 end

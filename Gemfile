@@ -2,10 +2,9 @@ ruby '2.4.1'
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
-
 
 gem 'rails'
 gem 'pg'
@@ -22,7 +21,7 @@ group :development, :test do
   gem 'bullet'
 end
 
-gem 'simplecov', :require => false, :group => :test
+gem 'simplecov', require: false, group: :test
 gem 'mocha', require: false, group: :test
 gem 'capybara', require: false, group: :test
 gem 'timecop', require: false, group: :test
@@ -44,7 +43,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-
 gem 'simple_form'
 gem 'figaro'
 gem 'mailgun-ruby'
@@ -65,7 +63,7 @@ gem 'mustache'
 gem 'json-formatter-rails'
 gem 'email_validator'
 
-gem "highcharts-rails"
+gem 'highcharts-rails'
 
 gem 'jquery-datatables-rails'
 gem 'ajax-datatables-rails'

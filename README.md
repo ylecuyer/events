@@ -1,8 +1,8 @@
-[![Travis](https://img.shields.io/travis/ylecuyer/events.svg)]()
-[![VersionEye](https://img.shields.io/versioneye/d/user/projects/593b69d9368b08004e5145bb.svg)]()
-[![Code Climate](https://img.shields.io/codeclimate/github/ylecuyer/events.svg)]()
-[![Code Climate](https://img.shields.io/codeclimate/coverage/github/ylecuyer/events.svg)]()
-[![license](https://img.shields.io/github/license/ylecuyer/events.svg)]()
+[![Travis](https://img.shields.io/travis/ylecuyer/events.svg)](https://travis-ci.org/ylecuyer/events)
+[![VersionEye](https://img.shields.io/versioneye/d/user/projects/593b69d9368b08004e5145bb.svg)](https://www.versioneye.com/user/projects/593b69d9368b08004e5145bb?child=summary)
+[![Code Climate](https://img.shields.io/codeclimate/github/ylecuyer/events.svg)](https://codeclimate.com/github/ylecuyer/events)
+[![Code Climate](https://img.shields.io/codeclimate/coverage/github/ylecuyer/events.svg)](https://codeclimate.com/github/ylecuyer/events/coverage)
+[![license](https://img.shields.io/github/license/ylecuyer/events.svg)](https://github.com/ylecuyer/events/blob/master/LICENSE.txt)
 
 # Events
 

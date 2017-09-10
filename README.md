@@ -10,6 +10,8 @@ Free & open-source invitation and event management platform. 🎫
 
 Mainly inspired by [Attendize](https://github.com/Attendize/Attendize)
 
+Go to the wiki to see some ![screenshots](https://github.com/ylecuyer/events/wiki/Screenshots)
+
 ## How to run with docker 🐳
 
 Clone the project

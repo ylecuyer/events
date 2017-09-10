@@ -25,6 +25,8 @@ gem 'simplecov', require: false, group: :test
 gem 'mocha', require: false, group: :test
 gem 'capybara', require: false, group: :test
 gem 'timecop', require: false, group: :test
+gem 'vcr', require: false, group: :test
+gem 'webmock', require: false, group: :test
 
 group :development do
   gem 'web-console'

@@ -96,6 +96,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     devise (4.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -116,6 +118,7 @@ GEM
       thor (~> 0.14)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    hashdiff (0.3.6)
     highcharts-rails (5.0.7)
       railties (>= 3.1)
     http-cookie (1.0.3)
@@ -258,6 +261,7 @@ GEM
     ruby-progressbar (1.8.1)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
+    safe_yaml (1.0.4)
     sass (3.5.1)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -312,6 +316,7 @@ GEM
     unf_ext (0.0.7.4)
     unicode-display_width (1.3.0)
     uniform_notifier (1.10.0)
+    vcr (3.0.3)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.5.1)
@@ -319,6 +324,10 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
+    webmock (3.0.1)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -376,7 +385,9 @@ DEPENDENCIES
   timecop
   tzinfo-data
   uglifier
+  vcr
   web-console
+  webmock
   wicked_pdf
 
 RUBY VERSION

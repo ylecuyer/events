@@ -1,0 +1,325 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.mailgun.net/v3/domains?limit=5&skip=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - api.mailgun.net
+      Authorization:
+      - Basic YXBpOmtleS1lYmFhNzkyZGM1YjNkNzM5MTczMDNiNDQwOGMwNmU2MQ==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Content-Type, x-requested-with
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '600'
+      Content-Disposition:
+      - inline
+      Content-Type:
+      - application/json
+      Date:
+      - Sun, 10 Sep 2017 16:55:29 GMT
+      Server:
+      - nginx
+      Content-Length:
+      - '1565'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "items": [
+            {
+              "created_at": "Fri, 16 Jun 2017 17:00:57 GMT",
+              "id": "59440ec9fa6095ebf5381d63",
+              "name": "mg.ambafrance.co",
+              "require_tls": false,
+              "skip_verification": false,
+              "smtp_login": "postmaster@mg.ambafrance.co",
+              "smtp_password": "dcd9d25e789aa7fa4f7d87dad0eae8c8",
+              "spam_action": "disabled",
+              "state": "active",
+              "type": "custom",
+              "web_prefix": "email",
+              "web_scheme": "http",
+              "wildcard": false
+            },
+            {
+              "created_at": "Wed, 30 Nov 2016 22:06:26 GMT",
+              "id": "583f4d62354c785e6e6c9c1f",
+              "name": "mailgun.ambafrance.ylecuyer.xyz",
+              "require_tls": false,
+              "skip_verification": false,
+              "smtp_login": "postmaster@mailgun.ambafrance.ylecuyer.xyz",
+              "smtp_password": "ec204edf0946ded4c082a7802cd57fd8",
+              "spam_action": "disabled",
+              "state": "active",
+              "type": "custom",
+              "web_prefix": "email",
+              "web_scheme": "http",
+              "wildcard": false
+            },
+            {
+              "created_at": "Tue, 22 Nov 2016 14:41:24 GMT",
+              "id": "58345914045ca40b8e8abd9b",
+              "name": "sandboxd12ec1188b4f479193be5b5052cbc625.mailgun.org",
+              "require_tls": false,
+              "skip_verification": false,
+              "smtp_login": "postmaster@sandboxd12ec1188b4f479193be5b5052cbc625.mailgun.org",
+              "smtp_password": "bac7cf283b16879f335cb0c6ab190452",
+              "spam_action": "disabled",
+              "state": "active",
+              "type": "sandbox",
+              "web_prefix": "email",
+              "web_scheme": "http",
+              "wildcard": false
+            }
+          ],
+          "total_count": 3
+        }
+    http_version: 
+  recorded_at: Sun, 10 Sep 2017 16:55:29 GMT
+- request:
+    method: get
+    uri: https://api.mailgun.net/v3/mg.ambafrance.co/stats/total?duration=30d&event=accepted
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - api.mailgun.net
+      Authorization:
+      - Basic YXBpOmtleS1lYmFhNzkyZGM1YjNkNzM5MTczMDNiNDQwOGMwNmU2MQ==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Content-Type, x-requested-with
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '600'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 10 Sep 2017 16:55:30 GMT
+      Server:
+      - nginx
+      Content-Length:
+      - '2808'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"end":"Sun, 10 Sep 2017 00:00:00 UTC","resolution":"day","start":"Sat,
+        12 Aug 2017 00:00:00 UTC","stats":[{"time":"Sat, 12 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sun,
+        13 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Mon,
+        14 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Tue,
+        15 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Wed,
+        16 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Thu,
+        17 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Fri,
+        18 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sat,
+        19 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sun,
+        20 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Mon,
+        21 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Tue,
+        22 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Wed,
+        23 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Thu,
+        24 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Fri,
+        25 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sat,
+        26 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sun,
+        27 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Mon,
+        28 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Tue,
+        29 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Wed,
+        30 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Thu,
+        31 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Fri,
+        01 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sat,
+        02 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sun,
+        03 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Mon,
+        04 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Tue,
+        05 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Wed,
+        06 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Thu,
+        07 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Fri,
+        08 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sat,
+        09 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sun,
+        10 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":1,"total":1}}]}'
+    http_version: 
+  recorded_at: Sun, 10 Sep 2017 16:55:30 GMT
+- request:
+    method: get
+    uri: https://api.mailgun.net/v3/mailgun.ambafrance.ylecuyer.xyz/stats/total?duration=30d&event=accepted
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - api.mailgun.net
+      Authorization:
+      - Basic YXBpOmtleS1lYmFhNzkyZGM1YjNkNzM5MTczMDNiNDQwOGMwNmU2MQ==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Content-Type, x-requested-with
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '600'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 10 Sep 2017 16:55:32 GMT
+      Server:
+      - nginx
+      Content-Length:
+      - '2808'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"end":"Sun, 10 Sep 2017 00:00:00 UTC","resolution":"day","start":"Sat,
+        12 Aug 2017 00:00:00 UTC","stats":[{"time":"Sat, 12 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sun,
+        13 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Mon,
+        14 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Tue,
+        15 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Wed,
+        16 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Thu,
+        17 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Fri,
+        18 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":6,"total":6}},{"time":"Sat,
+        19 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sun,
+        20 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Mon,
+        21 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Tue,
+        22 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Wed,
+        23 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Thu,
+        24 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":1,"total":1}},{"time":"Fri,
+        25 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sat,
+        26 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sun,
+        27 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Mon,
+        28 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Tue,
+        29 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Wed,
+        30 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Thu,
+        31 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Fri,
+        01 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sat,
+        02 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sun,
+        03 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Mon,
+        04 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Tue,
+        05 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Wed,
+        06 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Thu,
+        07 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Fri,
+        08 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sat,
+        09 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sun,
+        10 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}}]}'
+    http_version: 
+  recorded_at: Sun, 10 Sep 2017 16:55:32 GMT
+- request:
+    method: get
+    uri: https://api.mailgun.net/v3/sandboxd12ec1188b4f479193be5b5052cbc625.mailgun.org/stats/total?duration=30d&event=accepted
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - api.mailgun.net
+      Authorization:
+      - Basic YXBpOmtleS1lYmFhNzkyZGM1YjNkNzM5MTczMDNiNDQwOGMwNmU2MQ==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Content-Type, x-requested-with
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '600'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 10 Sep 2017 16:55:33 GMT
+      Server:
+      - nginx
+      Content-Length:
+      - '2808'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"end":"Sun, 10 Sep 2017 00:00:00 UTC","resolution":"day","start":"Sat,
+        12 Aug 2017 00:00:00 UTC","stats":[{"time":"Sat, 12 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sun,
+        13 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Mon,
+        14 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Tue,
+        15 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Wed,
+        16 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Thu,
+        17 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Fri,
+        18 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sat,
+        19 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sun,
+        20 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Mon,
+        21 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Tue,
+        22 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Wed,
+        23 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Thu,
+        24 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Fri,
+        25 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sat,
+        26 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sun,
+        27 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Mon,
+        28 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Tue,
+        29 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Wed,
+        30 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Thu,
+        31 Aug 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Fri,
+        01 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sat,
+        02 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sun,
+        03 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Mon,
+        04 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Tue,
+        05 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Wed,
+        06 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Thu,
+        07 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Fri,
+        08 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sat,
+        09 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}},{"time":"Sun,
+        10 Sep 2017 00:00:00 UTC","accepted":{"incoming":0,"outgoing":0,"total":0}}]}'
+    http_version: 
+  recorded_at: Sun, 10 Sep 2017 16:55:33 GMT
+recorded_with: VCR 3.0.3

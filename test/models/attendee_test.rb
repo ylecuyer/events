@@ -113,6 +113,62 @@ class AttendeeTest < ActiveSupport::TestCase
     end
   end
 
+  test 'query_delivered' do
+    event = events(:first)
+    
+    timestamp_node = Arel::Nodes::InfixOperation.new('->>', Log.arel_table[:json], Arel::Nodes::build_quoted('timestamp'))
+    cast_timestamp_node = Arel::Nodes::NamedFunction.new('CAST', [timestamp_node.as('FLOAT')])
+    max_cast_timestamp_node = Arel::Nodes::Max.new [Arel::Nodes::NamedFunction.new('CAST', [timestamp_node.as('FLOAT')])]
+    event_node = Arel::Nodes::InfixOperation.new('->>', Log.arel_table[:json], Arel::Nodes::build_quoted('event'))
+    sub_query = Log.arel_table.project(max_cast_timestamp_node).where(Log.arel_table[:attendee_id].eq(Attendee.arel_table[:id]))
+
+    delivered = event.attendees.with_logs
+      .where(Arel::Nodes::Equality.new cast_timestamp_node, sub_query)
+      .where(event_node.eq('delivered'))
+      .count
+
+    assert_equal 1, delivered
+  end
+
+  test 'query_failed' do
+    event = events(:first)
+    
+    timestamp_node = Arel::Nodes::InfixOperation.new('->>', Log.arel_table[:json], Arel::Nodes::build_quoted('timestamp'))
+    cast_timestamp_node = Arel::Nodes::NamedFunction.new('CAST', [timestamp_node.as('FLOAT')])
+    max_cast_timestamp_node = Arel::Nodes::Max.new [Arel::Nodes::NamedFunction.new('CAST', [timestamp_node.as('FLOAT')])]
+    event_node = Arel::Nodes::InfixOperation.new('->>', Log.arel_table[:json], Arel::Nodes::build_quoted('event'))
+    severity_node = Arel::Nodes::InfixOperation.new('->>', Log.arel_table[:json], Arel::Nodes::build_quoted('severity'))
+    sub_query = Log.arel_table.project(max_cast_timestamp_node).where(Log.arel_table[:attendee_id].eq(Attendee.arel_table[:id]))
+
+    failed = event.attendees.with_logs
+      .where(Arel::Nodes::Equality.new cast_timestamp_node, sub_query)
+      .where(event_node.eq('failed'))
+      .where(severity_node.eq('permanent'))
+      .count
+
+    assert_equal 1, failed
+  end
+
+  test 'query_warning' do
+    event = events(:first)
+    
+    timestamp_node = Arel::Nodes::InfixOperation.new('->>', Log.arel_table[:json], Arel::Nodes::build_quoted('timestamp'))
+    cast_timestamp_node = Arel::Nodes::NamedFunction.new('CAST', [timestamp_node.as('FLOAT')])
+    max_cast_timestamp_node = Arel::Nodes::Max.new [Arel::Nodes::NamedFunction.new('CAST', [timestamp_node.as('FLOAT')])]
+    event_node = Arel::Nodes::InfixOperation.new('->>', Log.arel_table[:json], Arel::Nodes::build_quoted('event'))
+    severity_node = Arel::Nodes::InfixOperation.new('->>', Log.arel_table[:json], Arel::Nodes::build_quoted('severity'))
+    sub_query = Log.arel_table.project(max_cast_timestamp_node).where(Log.arel_table[:attendee_id].eq(Attendee.arel_table[:id]))
+
+    warning = event.attendees.with_logs
+      .where(Arel::Nodes::Equality.new cast_timestamp_node, sub_query)
+      .where(event_node.eq('failed'))
+      .where(severity_node.eq('temporary'))
+      .count
+
+    assert_equal 1, warning
+  end
+    
+
   # test "the truth" do
   #   assert true
   # end

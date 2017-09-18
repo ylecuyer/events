@@ -36,6 +36,8 @@ class Attendee < ApplicationRecord
 
   validates :first_name, :last_name, :email, presence: true
 
+  scope :with_logs, -> { joins(:logs) }
+
   def full_name
     "#{first_name} #{last_name}"
   end

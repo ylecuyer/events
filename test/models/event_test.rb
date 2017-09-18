@@ -22,7 +22,7 @@ require 'test_helper'
 class EventTest < ActiveSupport::TestCase
   test 'Event tag for mailgun' do
     event = events(:first)
-    assert_equal 'Event-1', event.tag
+    assert_equal "Event-#{event.id}", event.tag
   end
 
   test 'dummy event' do

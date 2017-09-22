@@ -1,13 +1,18 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_action :set_upcomming_events
+  before_action :check_at_least_one_user!
   before_action :authenticate_user!
+  before_action :set_upcomming_events
 
   include Pundit
   after_action :verify_authorized, unless: -> { devise_controller? || ckeditor_controller? || mg_controller? }
 
   private
+
+  def check_at_least_one_user!
+    redirect_to '/wizard'
+  end
 
   def set_upcomming_events
     @upcommig_events = Event.order('start asc').where('start >= ?', Time.now).limit(3)

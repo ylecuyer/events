@@ -69,3 +69,5 @@ gem 'highcharts-rails'
 
 gem 'jquery-datatables-rails'
 gem 'ajax-datatables-rails'
+
+gem 'wicked'

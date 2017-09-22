@@ -122,6 +122,7 @@ Rails.application.routes.draw do
   post 'mg/bounced' => 'mg#webhook'
 
   resources :users
+  resources :setup 
 
   root 'static#index'
 

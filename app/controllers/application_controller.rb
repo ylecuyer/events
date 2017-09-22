@@ -6,12 +6,12 @@ class ApplicationController < ActionController::Base
   before_action :set_upcomming_events
 
   include Pundit
-  after_action :verify_authorized, unless: -> { devise_controller? || ckeditor_controller? || mg_controller? }
+  after_action :verify_authorized, unless: -> { devise_controller? || ckeditor_controller? || mg_controller? || setup_controller? }
 
   private
 
   def check_at_least_one_user!
-    redirect_to '/wizard'
+    redirect_to '/wizard' unless User.count > 0
   end
 
   def set_upcomming_events
@@ -24,5 +24,9 @@ class ApplicationController < ActionController::Base
 
   def mg_controller?
     is_a?(MgController)
+  end
+
+  def setup_controller?
+    is_a?(SetupController)
   end
 end

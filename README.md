@@ -4,6 +4,8 @@
 [![Code Climate](https://img.shields.io/codeclimate/coverage/github/ylecuyer/events.svg)](https://codeclimate.com/github/ylecuyer/events/coverage)
 [![license](https://img.shields.io/github/license/ylecuyer/events.svg)](https://github.com/ylecuyer/events/blob/master/LICENSE.txt)
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/ylecuyer/events/tree/deploy2heroku)
+
 # Events
 
 Free & open-source invitation and event management platform. 🎫
